@@ -1,0 +1,98 @@
+## -*-shell-script-*-
+
+# *************
+# gabeg Aliases
+# *************
+
+# Directory Shortcuts
+alias share='cd /mnt/Linux/Share'
+alias dls='cd /mnt/Linux/Share/docs/dls'
+alias docs='cd /mnt/Linux/Share/docs'
+alias res='cd /mnt/Linux/Share/docs/resume'
+alias drop='cd /mnt/Linux/Share/Dropbox'
+alias work='cd /mnt/Linux/Share/work'
+# alias comp='cd /mnt/Linux/Share/comp'
+alias music='cd /mnt/Linux/Share/Music'
+
+
+# Listing Folder Contents
+alias l='ls --color=auto --group-directories-first'
+alias ls='ls --color=auto --group-directories-first'
+alias lsm='ls --color=auto --group-directories-first -hlvX'
+alias lsc='ls --color=auto --group-directories-first -1 -vX'
+alias lsa='ls --color=auto --group-directories-first -Av'
+alias lsd='ls --color=auto --group-directories-first -d */'
+alias lsn='ls --color=auto --group-directories-first -v'
+alias lsnm='ls --color=auto --group-directories-first -hlv'
+alias lst='ls --color=auto --group-directories-first -hltr'
+alias lsx='ls --color=auto --group-directories-first -X'
+
+
+# Viewing and/or Editing Files
+alias less='less -M'
+alias nemacs='emacs -nw'
+alias subfix='wmctrl -r Sublime -e "0,0,0,790,548"'
+alias pdf='qpdfview'
+
+
+# Pattern Searching
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+
+# Deleting, Moving, or Copying Files
+alias rm='rm -i'
+alias rmf='rm -r -f'
+alias til='del *~'
+
+alias mv='mv -nv'
+alias cp='cp -nv'
+alias cpd='cp -r'
+
+
+# Compressing Files
+alias mktar='tar -zcvpf'
+alias untar='tar -xvpf'
+alias vtar='tar -tf'
+
+
+# School Aliases
+alias wperp='cd /mnt/Linux/Share/docs/school/spr15/as414'
+alias mehta='cd /mnt/Linux/Share/docs/school/spr15/py410'
+alias cham='cd /mnt/Linux/Share/docs/school/spr15/py451'
+
+alias text='cd /mnt/Linux/Share/docs/school/text'
+alias school='cd /mnt/Linux/Share/docs/school'
+
+
+# Misc Aliases
+alias x='exit'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+alias own='sudo chown -R gabeg:gabeg'
+alias fixtime='sudo ntpd -qg'
+
+
+# Typo Aliases
+alias emacs='emacs -g 90'
+alias emcas='emacs -g 90'
+alias emasc='emacs -g 90'
+alias ksm='lsm'
+alias python='python2.7'
+
+alias redwm='cd ~/.config/dwm &> /dev/null; makepkg -efi --noconfirm'
+
+# ******************
+# Defining Functions
+# ******************
+
+
+function cd() {
+    builtin cd "$@"
+    if [ $? -eq 0 ]; then 
+        lsm
+    fi
+}
