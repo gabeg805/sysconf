@@ -1,94 +1,46 @@
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;;;;; DEFAULT CUSTOM SET ;;;;;
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; *****************************************************************************
+;; Default custom sets
+;; *****************************************************************************
+
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(haskell-mode-hook (quote (turn-on-haskell-simple-indent))))
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "Input" :foundry "nil" :slant normal :weight normal :height 80 :width normal))))
- '(font-lock-builtin-face ((t (:foreground "blue"))))
- '(font-lock-comment-face ((t (:foreground "gray65"))))
- '(font-lock-string-face ((t (:foreground "orchid3"))))
- '(font-lock-variable-name-face ((t (:foreground "yellow4" :weight normal)))))
-
-;; (set-face-attribute 'default nil :font Inconsolata-8)
-;; (set-fram-font Inconsolata-8 nil t)
-
-
-;; ;;;;;;;;;;;;;;;;;;;;;
-;; ;;;;; FUNCTIONS ;;;;;
-;; ;;;;;;;;;;;;;;;;;;;;;
-
-;; Removes the specified buffer 
-(defun remove-scratch-buffer ()
-    (if (get-buffer "*scratch*")
-        (kill-buffer "*scratch*")))
-(defun remove-completion-buffer ()
-    (if (get-buffer "*Completions*")
-        (kill-buffer "*Completions*")))
-(defun remove-message-buffer ()
-    (if (get-buffer "*Messages*")
-        (kill-buffer "*Messages*")))
-
-;; Kill Line Backwards
-(defun backward-kill-line (arg)
-  "Kill ARG lines backward."
-  (interactive "p")
-  (kill-line (- 1 arg))
 )
 
-;; Run file
-(defun run-current-file ()
-  "Runs the compilation of the current file.
-   Assumes it has the same name, but without an extension"
-  (interactive)
-  (compile (file-name-sans-extension buffer-file-name)))
+(custom-set-faces
+ '(default ((t (:family "Input" :foundry "nil" :slant normal :weight normal :height 90 :width normal))))
+ ;; '(font-lock-builtin-face ((t (:foreground "deep sky blue" :weight normal))))
+ ;; '(font-lock-comment-face ((t (:foreground "gray65"))))
+ ;; '(font-lock-string-face ((t (:foreground "orchid3"))))
+)
 
-;; Prompt when closing
-(defun ask-before-closing ()
-  "Ask whether or not to close, and then close if y was pressed"
-  (interactive)
-  (if (y-or-n-p (format "Are you sure you want to exit Emacs? "))
-      (if (< emacs-major-version 22)
-          (save-buffers-kill-terminal)
-        (save-buffers-kill-emacs))
-    (message "Canceled exit")))
-
-
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;;;;; SETUP EMACS WINDOW ;;;;;
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Library is being deprecated and causing errors, this will fix the errors
-(require 'cl)
+;; *****************************************************************************
+;; General Setup
+;; *****************************************************************************
 
 ;; Setup emacs display
 (display-time)
-(setq inhibit-startup-screen t)
+(global-linum-mode 1)
+(setq column-number-mode 1)
+(setq visible-bell 1)
 
+;; Disable toolbar and scroll bar
 (when (window-system)
   (tool-bar-mode -1)
   (scroll-bar-mode -1))
 
-(menu-bar-mode -1)
-(setq column-number-mode 1)
-(setq visible-bell 1)
-
-;; Enable copy from clipboard (or something like that)
-(setq x-select-enable-clipboard t)
-
-;; Make backups with "~" appended to the file name
-(setq make-backup-files 1)
+;; Highlight parenthesis pairs
+(show-paren-mode 1)
+(setq show-paren-delay 0)
 
 ;; Change the way Emacs keyboard scrolls
 (setq redisplay-dont-pause t
@@ -103,41 +55,29 @@
 
 ;; Changing highlight region defaults
 (transient-mark-mode 1)
-(set-face-attribute 'region nil
-                    :background "#ffe34c"
-                    :foreground nil
-                    :inherit t)
+;; (set-face-attribute 'region nil
+;;                     :background "#ffe34c"
+;;                     :foreground nil
+;;                     :inherit t)
 
 ;; Changing highlight line defaults
+(remove-hook 'coding-hook 'turn-on-hl-line-mode)
 (global-hl-line-mode 1)
-(setq hl-line-sticky-flag nil)
+(setq hl-line-sticky-flag 1)
 
-(if (window-system)
-    (defvar hlback "#ececed")
-    (progn 
-      (defvar hlback "#101010") 
-      ;; (invert-face 'font-lock-comment-face)
-    )
-)
+;; (set-face-attribute 'hl-line nil
+;;                     :background "#e5e5e5"
+;;                     :foreground nil
+;;                     :inherit t)
 
-(set-face-attribute 'hl-line nil
-                    :background hlback
-                    :foreground nil
-                    :inherit t)
-;; (invert-face 'hl-line)
+;; Enable copy from clipboard (or something like that)
+(setq x-select-enable-clipboard t)
 
-;; Highlight parenthesis pairs
-(show-paren-mode 1)
-(setq show-paren-delay 0)
+;; Make backups with "~" appended to the file name
+(setq make-backup-files 1)
 
-;; Makes *scratch* empty.
-(setq initial-scratch-message "")
-(setq-default message-log-max nil)
-
-;; Removes the specified buffer 
-(add-hook 'after-change-major-mode-hook 'remove-scratch-buffer)
-(add-hook 'minibuffer-exit-hook 'remove-completion-buffer)
-(remove-message-buffer)
+;; Stop asking to follow git controlled source file
+(setq vc-follow-symlinks nil)
 
 ;; Line wrapping settings
 (setq-default fill-column 80)
@@ -145,11 +85,9 @@
 (add-hook 'fundamental-mode-hook 'turn-on-auto-fill)
 (add-hook 'latex-mode-hook 'turn-on-auto-fill)
 
-
-
-;; ;;;;;;;;;;;;;;;;;;;;;;;
-;; ;;;;; INDENTATION ;;;;;
-;; ;;;;;;;;;;;;;;;;;;;;;;;
+;; *****************************************************************************
+;; Indentation
+;; *****************************************************************************
 
 ;; General identation preferences
 (setq-default indent-tabs-mode nil)
@@ -157,59 +95,74 @@
 (setq indent-line-function 'insert-tab)
 (setq tab-stop-list (number-sequence 4 200 4))
 
+;; Python
 (add-hook 'python-mode-hook '(lambda () 
  (setq python-indent 4)))
 
 ;; Disable auto indent
 (add-hook 'after-change-major-mode-hook '(lambda () (electric-indent-mode 0)))
 
-
+;; LaTeX
 (setq LaTeX-indent-level 4)
 (setq LaTeX-item-indent 0)
 (setq TeX-brace-indent-level 4)
 (setq font-lock-maximum-decoration '((latex-mode . 2)))
 
-;; IDL indentation preferences 
-(setq idlwave-main-block-indent 0   ; default  0
-      idlwave-block-indent 4        ; default  4
-      idlwave-end-offset -4)        ; default -4
-
-;; IDL Syntax Highlighting
-(add-hook 'idlwave-mode-hook 'turn-on-font-lock)
-
-;; IDL online help files location
-(setq idlwave-help-directory "~/.idlwave")
-
-;; IDL indent function/pro calls
-(setq idlwave-main-block-indent 4)
-
-(add-hook 'php-mode-hook 'my-php-mode-hook)
-(defun my-php-mode-hook ()
-  "My PHP mode configuration."
-  (setq indent-tabs-mode nil
-        tab-width 4
-        c-basic-offset 4))
- 
-;; Lua indentation preferences
-(setq lua-indent-level 4)
-(add-to-list 'auto-mode-alist '("\\.lua\\'" . lua-mode))
-
-;; (setq-default c-basic-offset 4
-;;               tab-width 4)
+;; C
 (setq c-default-style "linux"
       c-basic-offset 4)
 
+;; *****************************************************************************
+;; Functions
+;; *****************************************************************************
 
+;; Removes the specified buffer 
+(defun remove-completion-buffer ()
+    (if (get-buffer "*Completions*")
+        (kill-buffer "*Completions*")))
+(defun remove-message-buffer ()
+    (if (get-buffer "*Messages*")
+        (kill-buffer "*Messages*")))
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;
-;; ;;;;; KEYBINDINGS ;;;;;
-;; ;;;;;;;;;;;;;;;;;;;;;;;
+;; Kill Line Backwards
+(defun backward-kill-line (arg)
+  "Kill ARG lines backward."
+  (interactive "p")
+  (kill-line (- 1 arg))
+)
+
+;; Prompt when closing
+(defun ask-before-closing ()
+  "Ask whether or not to close, and then close if y was pressed"
+  (interactive)
+  (if (y-or-n-p (format "Are you sure you want to exit Emacs? "))
+      (if (< emacs-major-version 22)
+          (save-buffers-kill-terminal)
+        (save-buffers-kill-emacs))
+    (message "Canceled exit")))
+
+;; Change to solarized light theme
+(defun set-solarized-light ()
+  (interactive)
+  (customize-set-variable 'frame-background-mode 'light)
+  (load-theme 'solarized t))
+
+;; Change to solarized dark theme
+(defun set-solarized-dark ()
+  (interactive)
+  (customize-set-variable 'frame-background-mode 'dark)
+  (load-theme 'solarized t))
+
+;; *****************************************************************************
+;; Keybindings
+;; *****************************************************************************
 
 ;; Unset keybindings
 (global-unset-key "\C-x\C-z")
 (global-unset-key "\C-z")
 (global-unset-key "\C-j")
 (global-unset-key "\M-r")
+(global-unset-key "\C-xb")
 
 ;; Set keybindings
 (global-set-key "\C-xw" 'count-words)
@@ -223,54 +176,48 @@
 (global-set-key "\C-xc" 'set-fill-column)
 ;; (global-set-key "\C-xf" 'fill-individual-paragraphs)
 (global-set-key "\C-xp" 'fill-paragraph)
-
 (global-set-key (kbd "<f5>") 'eval-buffer)
-
-(global-unset-key "\C-xb")
 (global-set-key "\C-xb" 'backward-kill-line) 
-
 (global-set-key (kbd "C-x C-c") 'ask-before-closing)
 
+;; Color theme
+(global-set-key (kbd "C-c l") 'set-solarized-light)
+(global-set-key (kbd "C-c d") 'set-solarized-dark)
 
+;; *****************************************************************************
+;; Remove unwanted windows
+;; *****************************************************************************
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;;;;; MARMALADE PACKAGE INFORMATION ;;;;;
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Startup window
+(setq inhibit-startup-screen t)
 
-(require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
-(package-initialize)
+;; *scratch* empty.
+(setq initial-scratch-message "")
+(setq-default message-log-max nil)
 
+;; Completion buffer
+(add-hook 'minibuffer-exit-hook 'remove-completion-buffer)
+(remove-message-buffer)
 
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; ;;;;; DOWNLOADED '.EL' FILES ;;;;;
-;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; *****************************************************************************
+;; Custom themes
+;; *****************************************************************************
 
-(add-to-list 'load-path "/home/gabeg/.emacs.d/user-elisp/")
-(require 'arduino-mode)
-(require 'less-css-mode)
-(require 'php-mode)
+;; Load theme
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized/")
+;; (customize-set-variable 'frame-background-mode 'dark)
+;; (load-theme 'solarized t)
 
-;; [Facultative] Only if you have installed async.
-(add-to-list 'load-path "/home/gabeg/.emacs.d/user-elisp/helm/async/")
-(add-to-list 'load-path "/home/gabeg/.emacs.d/user-elisp/helm/helm/")
-(require 'helm-config)
+;; ;; Set theme mode
+;; (set-frame-parameter nil 'background-mode 'dark)
+;; (set-terminal-parameter nil 'background-mode 'dark)
+;; (enable-theme 'solarized)
 
-;; ;;;;;;;;;;;;;;;;
-;; ;;;;; HELM ;;;;;
-;; ;;;;;;;;;;;;;;;;
+;; (add-to-list 'load-path "/home/gabeg/.emacs.d/user-elisp/modes")
 
-
-;; helm-recentf:                  helm-recentf-fuzzy-match to t.
-;; helm-mini:                     helm-buffers-fuzzy-matching and helm-recentf-fuzzy-match to t.
-;; helm-buffers-list:             helm-buffers-fuzzy-matching to t.
-;; (helm-find-files t)
-;; helm-locate:                   helm-locate-fuzzy-match to t.
-;; helm-M-x:                      helm-M-x-fuzzy-match to t.
-;; helm-semantic:                 helm-semantic-fuzzy-match to t.
-;; helm-imenu:                    helm-imenu-fuzzy-match to t.
-;; helm-apropos:                  helm-apropos-fuzzy-match to t.
-;; helm-lisp-completion-at-point: helm-lisp-fuzzy-completion to t.
-;; (helm-mode 0)
-
+;; (add-hook 'after-make-frame-functions
+;;           (lambda (frame)   
+;;             (let ((mode (if (display-graphic-p frame) 'dark 'dark)))
+;;               (set-frame-parameter frame 'background-mode mode)
+;;               (set-terminal-parameter frame 'background-mode mode))
+;;             (enable-theme 'solarized)))
