@@ -1,0 +1,52 @@
+x = set)_
+x = set()
+y = [1,2,3]
+z = [2,3,1]
+x.add(y)
+p = tuple(y)
+p
+y.sort()
+y
+z.sort()
+z
+z = [3, 2, 1]
+x.add(tuple(y))
+x.add(tuple(z))
+x
+x = set()
+z.sort()
+z
+x
+y
+x.add(tuple(y))
+x.add(tuple(z))
+x
+x = 123
+int(x)
+x = 'abc'
+int(x)
+from datetime import datetime
+datetime.year
+datetime.now()
+datetime.now().year
+datetime.now().mon
+datetime.now().month
+datetime.now().day
+datetime.now().hour
+datetime.now().min
+datetime.now().minute
+import os
+os.environ['HOME']
+datetime.now().hour
+int(None)
+x = None
+int(x)
+x = 'a'
+int(x)
+x = []
+if (x): print 'Hello'
+x = [1]
+if (x): print 'Hello'
+import logging
+help(logging
+)

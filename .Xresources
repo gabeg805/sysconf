@@ -1,35 +1,38 @@
 URxvt.perl-ext-common: default,matcher,clipboard,tabbedex
 
-URxvt*foreground: White
-URxvt*background: Black
+URxvt*foreground: #ffffff
+URxvt*background: #300a24
 URxvt.scrollstyle: plain
 URxvt.visualBell: true
-! URxvt.font: xft:Input-Regular:pixelsize=12:antialiasing=true
-URxvt.font: xft:Inconsolata:pixelsize=14:antialiasing=true
-URxvt.letterSpace: -1
 ! URxvt.font: xft:GohuFont:pixelsize=12:antialiasing=true
-URxvt.keysym.C-M-w:   perl:clipboard:copy
-URxvt.keysym.C-M-y:   perl:clipboard:paste
-URxvt.url-launcher: /usr/bin/firefox
+! URxvt.font: xft:Input-Regular:pixelsize=14:antialiasing=true
+URxvt.font:           xft:Terminus:pixelsize=14:antialiasing=true
+URxvt.letterSpace:    1
 URxvt.matcher.button: 1
-URxvt.colorUL: #4682B4
+URxvt.url-launcher:   /usr/bin/firefox
+URxvt.colorUL:        #4682B4
 
-URxvt.tabbed.new-button: false
-URxvt.tabbed.autohide: true
-URXvt.tabbed.reopen-on-close: yes
+URxvt.tabbed.new-button:       false
+URxvt.tabbed.autohide:         true
+URXvt.tabbed.reopen-on-close:  yes
 URxvt.tabbed.no-tabbedex-keys: true
 
-URxvt.keysym.Control-t: perl:tabbedex:new_tab
+URxvt.keysym.C-M-w:           perl:clipboard:copy
+URxvt.keysym.C-M-y:           perl:clipboard:paste
+URxvt.keysym.Shift-Control-C: perl:clipboard:copy
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+
+URxvt.keysym.Control-t:   perl:tabbedex:new_tab
+URxvt.keysym.Shift-Down:  perl:tabbedex:new_tab
 URxvt.keysym.Shift-Right: perl:tabbedex:next_tab
-URxvt.keysym.Shift-Left: perl:tabbedex:prev_tab
-URxvt.keysym.Shift-Up: perl:tabbedex:next_tab
-URxvt.keysym.Shift-Down: perl:tabbedex:prev_tab
+URxvt.keysym.Shift-Left:  perl:tabbedex:prev_tab
+
 
 URxvt.clipboard.autocopy: false
 URxvt.searchable-scrollback: CM-s
 URxvt*scrollTtyOutput: false
 URxvt*scrollTtyKeypress: true
-URxvt.saveLines: 500
+URxvt.saveLines: 10000
 
-URxvt.iso14755: false
+URxvt.iso14755:    false
 URxvt.iso14755_52: false
