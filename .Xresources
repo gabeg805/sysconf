@@ -1,35 +1,71 @@
-URxvt.perl-ext-common: default,matcher,clipboard,tabbedex
+URxvt.perl-ext-common: default,matcher,clipboard-osc,tabbedex
 
-URxvt*foreground: #000000
-URxvt*background: #aaaaaa
-URxvt.scrollstyle: plain
-URxvt.visualBell: true
-URxvt.font:           8x13
-URxvt.letterSpace:    1
-URxvt.matcher.button: 1
-URxvt.url-launcher:   /usr/bin/firefox
-URxvt.colorUL:        #4682B4
+! Font
+URxvt.font               : 9x15
+URxvt.letterSpace        : 1
 
-URxvt.tabbed.new-button:       false
-URxvt.tabbed.autohide:         true
-URXvt.tabbed.reopen-on-close:  yes
-URxvt.tabbed.no-tabbedex-keys: true
+! Colors
+URxvt*foreground : #ffffff
+URxvt*background : #292e30
 
-URxvt.keysym.C-M-w:           perl:clipboard:copy
-URxvt.keysym.C-M-y:           perl:clipboard:paste
-URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+! Black
+URxvt.color0  : #000000
+URxvt.color8  : #333333
+! Red
+URxvt.color1  : #cc0000
+URxvt.color9  : #ec2929
+! Green
+URxvt.color2  : #4e9a06
+URxvt.color10 : #8ae234
+! Yellow
+URxvt.color3  : #c4a000
+URxvt.color11 : #fce94f
+! Blue
+URxvt.color4  : #3465a4
+URxvt.color12 : #729fcf
+! Magenta
+URxvt.color5  : #75507b
+URxvt.color13 : #ad7fa8
+! Cyan
+URxvt.color6  : #06989a
+URxvt.color14 : #34e2e2
+! White
+URxvt.color7  : #d3d7cf
+URxvt.color15 : #eeeeec
 
-URxvt.keysym.Control-t:   perl:tabbedex:new_tab
-URxvt.keysym.Shift-Down:  perl:tabbedex:new_tab
-URxvt.keysym.Shift-Right: perl:tabbedex:next_tab
-URxvt.keysym.Shift-Left:  perl:tabbedex:prev_tab
+! Tabs
+URxvt.tabbed.new-button       : false
+URxvt.tabbed.autohide         : true
+URXvt.tabbed.reopen-on-close  : yes
+URxvt.tabbed.no-tabbedex-keys : true
 
-URxvt.clipboard.autocopy: false
-URxvt.searchable-scrollback: CM-s
-URxvt*scrollTtyOutput: false
-URxvt*scrollTtyKeypress: true
-URxvt.saveLines: 10000
+! Keybindings
+URxvt.keysym.C-M-w           : perl:clipboard:copy
+URxvt.keysym.C-M-y           : perl:clipboard:paste
+URxvt.keysym.Shift-Control-C : perl:clipboard:copy
+URxvt.keysym.Shift-Control-V : perl:clipboard:paste
+URxvt.keysym.Control-t       : perl:tabbedex:new_tab
+URxvt.keysym.Shift-Down      : perl:tabbedex:new_tab
+URxvt.keysym.Shift-Right     : perl:tabbedex:next_tab
+URxvt.keysym.Shift-Left      : perl:tabbedex:prev_tab
 
-URxvt.iso14755:    false
-URxvt.iso14755_52: false
+! Scroll wheel
+URxvt.scrollstyle       : plain
+URxvt*scrollBar         : true
+URxvt*scrollBar_right   : true
+URxvt*scrollstyle       : plain
+URxvt*scrollTtyOutput   : false
+URxvt*scrollTtyKeypress : true
+URxvt.saveLines         : 10000
+! ! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+! URxvt*scrollWithBuffer: false
+
+! Miscellaneous
+URxvt*cutchars           : "`\"()'*<>[]{|}:="
+URxvt.url-launcher       : /usr/bin/firefox
+URxvt.colorUL            : #4682B4
+URxvt.clipboard.autocopy : false
+URxvt.visualBell         : true
+URxvt.matcher.button     : 1
+URxvt.iso14755           : false
+URxvt.iso14755_52        : false

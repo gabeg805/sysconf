@@ -65,7 +65,7 @@ export TEXMFHOME=${HOME}/.texmf
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     eval "$(dircolors -b)"
-    export LS_COLORS=${LS_COLORS}:'*~=00;31':'*.pdf=00;32':'*.bak=00;33':'*.ps=01;35':'*.orig=00;33'
+    export LS_COLORS=${LS_COLORS}:"*~=00;31":"*.pdf=00;32":"*.bak=00;33":"*.ps=01;35":"*.orig=00;33"
 fi
 
 # Editing The Path
