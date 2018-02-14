@@ -15,4 +15,4 @@ fi
 [ -f "${HOME}/.Xmodmap" ]    && xmodmap "${HOME}/.Xmodmap"
 
 # exec openbox-session
-exec openbox
+exec i3

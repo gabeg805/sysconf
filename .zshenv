@@ -68,7 +68,18 @@ if [ -x /usr/bin/dircolors ]; then
     export LS_COLORS=${LS_COLORS}:'*~=00;31':'*.pdf=00;32':'*.bak=00;33':'*.ps=01;35':'*.orig=00;33'
 fi
 
+
+
+# AWS
+export AWS_ACCESS_KEY_ID=AKIAIGXQMJKT6HTAQKLQ
+export AWS_SECRET_ACCESS_KEY=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
+
+
+
 # Editing The Path
-PROJDIR="${HOME}/projects"
-PATH="${PATH}":/opt/android-studio/bin:/opt/android-studio/gradle/latest/bin:${HOME}/Android/Sdk/tools:${HOME}/Android/Sdk/platform-tools:${PROJDIR}/automount:${PROJDIR}/backup:${PROJDIR}/battery:${PROJDIR}/brightness:${PROJDIR}/cpu:${PROJDIR}/Trash:${PROJDIR}/volume:${PROJDIR}/weather:${PROJDIR}/wifi
+# PROJDIR="${HOME}/projects"
+# PATH="${PATH}":/opt/android-studio/bin:/opt/android-studio/gradle/latest/bin:${HOME}/Android/Sdk/tools:${HOME}/Android/Sdk/platform-tools:${PROJDIR}/automount:${PROJDIR}/backup:${PROJDIR}/battery:${PROJDIR}/brightness:${PROJDIR}/cpu:${PROJDIR}/Trash:${PROJDIR}/volume:${PROJDIR}/weather:${PROJDIR}/wifi
+
+PATH="${PATH}":"${HOME}/projects/bin":"/opt/android-studio/bin":"/opt/android-studio/gradle/latest/bin":"${HOME}/Android/Sdk/tools":"${HOME}/Android/Sdk/platform-tools"
+
 typeset -U path

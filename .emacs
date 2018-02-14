@@ -169,6 +169,7 @@
 (global-set-key "\M-," 'beginning-of-buffer)
 (global-set-key "\M-." 'end-of-buffer)
 (global-set-key "\M-r" 'query-replace)
+(global-set-key "\M-s" 'switch-to-buffer)
 (global-set-key "\M-f" 'forward-word)
 (global-set-key "\M-b" 'backward-word)
 (global-set-key "\C-f" 'forward-char)

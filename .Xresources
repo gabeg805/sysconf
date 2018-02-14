@@ -1,12 +1,10 @@
 URxvt.perl-ext-common: default,matcher,clipboard,tabbedex
 
-URxvt*foreground: #ffffff
-URxvt*background: #300a24
+URxvt*foreground: #000000
+URxvt*background: #eeeeee
 URxvt.scrollstyle: plain
 URxvt.visualBell: true
-! URxvt.font: xft:GohuFont:pixelsize=12:antialiasing=true
-! URxvt.font: xft:Input-Regular:pixelsize=14:antialiasing=true
-URxvt.font:           xft:Terminus:pixelsize=14:antialiasing=true
+URxvt.font:           8x13
 URxvt.letterSpace:    1
 URxvt.matcher.button: 1
 URxvt.url-launcher:   /usr/bin/firefox
@@ -26,7 +24,6 @@ URxvt.keysym.Control-t:   perl:tabbedex:new_tab
 URxvt.keysym.Shift-Down:  perl:tabbedex:new_tab
 URxvt.keysym.Shift-Right: perl:tabbedex:next_tab
 URxvt.keysym.Shift-Left:  perl:tabbedex:prev_tab
-
 
 URxvt.clipboard.autocopy: false
 URxvt.searchable-scrollback: CM-s
