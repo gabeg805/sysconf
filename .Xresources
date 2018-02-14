@@ -1,7 +1,7 @@
 URxvt.perl-ext-common: default,matcher,clipboard,tabbedex
 
 URxvt*foreground: #000000
-URxvt*background: #eeeeee
+URxvt*background: #aaaaaa
 URxvt.scrollstyle: plain
 URxvt.visualBell: true
 URxvt.font:           8x13
