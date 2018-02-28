@@ -1,6 +1,6 @@
-;; *****************************************************************************
+;; -----------------------------------------------------------------------------
 ;; Default custom sets
-;; *****************************************************************************
+;; -----------------------------------------------------------------------------
 
 
 ;; Added by Package.el.  This must come before configurations of
@@ -9,23 +9,13 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
-)
-
 (custom-set-faces
- '(default ((t (:family "Input" :foundry "nil" :slant normal :weight normal :height 90 :width normal))))
- ;; '(font-lock-builtin-face ((t (:foreground "deep sky blue" :weight normal))))
- ;; '(font-lock-comment-face ((t (:foreground "gray65"))))
- ;; '(font-lock-string-face ((t (:foreground "orchid3"))))
+ '(default ((t (:family "Input" :foundry "nil" :slant normal :weight normal :height 100 :width normal))))
 )
 
-;; *****************************************************************************
+;; -----------------------------------------------------------------------------
 ;; General Setup
-;; *****************************************************************************
+;; -----------------------------------------------------------------------------
 
 ;; Setup emacs display
 (display-time)
@@ -55,20 +45,19 @@
 
 ;; Changing highlight region defaults
 (transient-mark-mode 1)
-;; (set-face-attribute 'region nil
-;;                     :background "#ffe34c"
-;;                     :foreground nil
-;;                     :inherit t)
+(set-face-attribute 'region nil
+                    :background "#ffe34c"
+                    :foreground nil
+                    :inherit t)
 
 ;; Changing highlight line defaults
 (remove-hook 'coding-hook 'turn-on-hl-line-mode)
 (global-hl-line-mode 1)
 (setq hl-line-sticky-flag 1)
-
-;; (set-face-attribute 'hl-line nil
-;;                     :background "#e5e5e5"
-;;                     :foreground nil
-;;                     :inherit t)
+(set-face-attribute 'hl-line nil
+                    :background "#e5e5e5"
+                    :foreground nil
+                    :inherit t)
 
 ;; Enable copy from clipboard (or something like that)
 (setq x-select-enable-clipboard t)
@@ -85,9 +74,9 @@
 (add-hook 'fundamental-mode-hook 'turn-on-auto-fill)
 (add-hook 'latex-mode-hook 'turn-on-auto-fill)
 
-;; *****************************************************************************
+;; -----------------------------------------------------------------------------
 ;; Indentation
-;; *****************************************************************************
+;; -----------------------------------------------------------------------------
 
 ;; General identation preferences
 (setq-default indent-tabs-mode nil)
@@ -112,9 +101,9 @@
 (setq c-default-style "linux"
       c-basic-offset 4)
 
-;; *****************************************************************************
+;; -----------------------------------------------------------------------------
 ;; Functions
-;; *****************************************************************************
+;; -----------------------------------------------------------------------------
 
 ;; Removes the specified buffer 
 (defun remove-completion-buffer ()
@@ -153,9 +142,9 @@
   (customize-set-variable 'frame-background-mode 'dark)
   (load-theme 'solarized t))
 
-;; *****************************************************************************
+;; -----------------------------------------------------------------------------
 ;; Keybindings
-;; *****************************************************************************
+;; -----------------------------------------------------------------------------
 
 ;; Unset keybindings
 (global-unset-key "\C-x\C-z")
@@ -185,9 +174,9 @@
 (global-set-key (kbd "C-c l") 'set-solarized-light)
 (global-set-key (kbd "C-c d") 'set-solarized-dark)
 
-;; *****************************************************************************
+;; -----------------------------------------------------------------------------
 ;; Remove unwanted windows
-;; *****************************************************************************
+;; -----------------------------------------------------------------------------
 
 ;; Startup window
 (setq inhibit-startup-screen t)
@@ -200,9 +189,9 @@
 (add-hook 'minibuffer-exit-hook 'remove-completion-buffer)
 (remove-message-buffer)
 
-;; *****************************************************************************
+;; -----------------------------------------------------------------------------
 ;; Custom themes
-;; *****************************************************************************
+;; -----------------------------------------------------------------------------
 
 ;; Load theme
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized/")

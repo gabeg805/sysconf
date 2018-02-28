@@ -69,7 +69,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # Editing The Path
-PATH="${PATH}":"${HOME}/projects/bin":"/opt/android-studio/bin":"/opt/android-studio/gradle/latest/bin":"${HOME}/Android/Sdk/tools":"${HOME}/Android/Sdk/platform-tools"
+PATH="${PATH}":"${HOME}/projects/bin"
 
 typeset -U path
 

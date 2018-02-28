@@ -1,12 +1,14 @@
 URxvt.perl-ext-common: default,matcher,clipboard-osc,tabbedex
 
 ! Font
-URxvt.font               : 9x15
-URxvt.letterSpace        : 1
+URxvt.font        : 9x15
+URxvt.letterSpace : 1
 
 ! Colors
 URxvt*foreground : #ffffff
 URxvt*background : #292e30
+URxvt*transparent: true
+URxvt*shading    : 20
 
 ! Black
 URxvt.color0  : #000000
@@ -36,18 +38,17 @@ URxvt.color15 : #eeeeec
 ! Tabs
 URxvt.tabbed.new-button       : false
 URxvt.tabbed.autohide         : true
-URXvt.tabbed.reopen-on-close  : yes
-URxvt.tabbed.no-tabbedex-keys : true
 
 ! Keybindings
-URxvt.keysym.C-M-w           : perl:clipboard:copy
-URxvt.keysym.C-M-y           : perl:clipboard:paste
+URxvt.keysym.Meta-Control-w  : perl:clipboard:copy
+URxvt.keysym.Meta-Control-y  : perl:clipboard:paste
 URxvt.keysym.Shift-Control-C : perl:clipboard:copy
 URxvt.keysym.Shift-Control-V : perl:clipboard:paste
-URxvt.keysym.Control-t       : perl:tabbedex:new_tab
+URxvt.keysym.Shift-Up        :
 URxvt.keysym.Shift-Down      : perl:tabbedex:new_tab
-URxvt.keysym.Shift-Right     : perl:tabbedex:next_tab
 URxvt.keysym.Shift-Left      : perl:tabbedex:prev_tab
+URxvt.keysym.Shift-Right     : perl:tabbedex:next_tab
+URxvt.keysym.Control-t       : perl:tabbedex:new_tab
 
 ! Scroll wheel
 URxvt.scrollstyle       : plain
@@ -57,8 +58,7 @@ URxvt*scrollstyle       : plain
 URxvt*scrollTtyOutput   : false
 URxvt*scrollTtyKeypress : true
 URxvt.saveLines         : 10000
-! ! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
-! URxvt*scrollWithBuffer: false
+URxvt*scrollWithBuffer  : true
 
 ! Miscellaneous
 URxvt*cutchars           : "`\"()'*<>[]{|}:="
