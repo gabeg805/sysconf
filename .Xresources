@@ -49,6 +49,8 @@ URxvt.keysym.Shift-Down      : perl:tabbedex:new_tab
 URxvt.keysym.Shift-Left      : perl:tabbedex:prev_tab
 URxvt.keysym.Shift-Right     : perl:tabbedex:next_tab
 URxvt.keysym.Control-t       : perl:tabbedex:new_tab
+URxvt.keysym.Control-Left    : perl:tabbedex:move_tab_left
+URxvt.keysym.Control-Right   : perl:tabbedex:move_tab_right
 
 ! Scroll wheel
 URxvt.scrollstyle       : plain
