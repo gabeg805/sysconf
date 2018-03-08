@@ -1,4 +1,5 @@
 keysym Menu = Super_L Menu
+keycode 135 = Super_L
 keycode 66 = Control_L
 clear Lock
 add Control = Control_L
