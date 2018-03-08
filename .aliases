@@ -1,7 +1,7 @@
 ## -*-shell-script-*-
 
 # Listing Folder Contents
-alias ls='ls --color=auto --group-directories-first'
+alias ls='ls --color=auto --group-directories-first -N'
 alias l='ls'
 alias ll='ls -lvh'
 alias lsm='ls -lvh'
