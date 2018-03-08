@@ -62,6 +62,9 @@ export SUDO_EDITOR=/usr/bin/emacs
 # Latex user class files
 export TEXMFHOME=${HOME}/.texmf
 
+# Force Mullvad to use GTK3
+export MULLVAD_USE_GTK3=yes
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     eval "$(dircolors -b)"
