@@ -1,11 +1,54 @@
-## ~/.zshrc file
-##
-## Purpose: Main ZSH config file.
-##
+# ------------------------------------------------------------------------------
+# File: ~/.zshrc
+# Author: Gabe Gonzalez
+# Brief: Interactive shell configuration. Started every time a terminal is run.
+# 
+# ------------------------------------------------------------------------------
 
-## Emacs key bindings
+# Ignore duplicates
+setopt hist_ignore_all_dups
+
+# Prevent preceding spaces from being recorded in histfile
+setopt hist_ignore_space
+
+# Append history list to history file (rather than replace it)
+setopt appendhistory 
+
+# If directory name is entered (w/o issuing cd command) then assume cd was
+# intended
+setopt autocd 
+
+# Treat the '#', '~' and '^' characters as part of patterns for filename
+# generation
+setopt extendedglob
+
+# Prevent aliases on command line from being substituted before completion
+# is attempted
+setopt completealiases
+
+# Do not require a leading '.' in a filename to be matched explicitly
+setopt globdots
+
+# Enables brace expansion for alphabetic characters
+setopt braceccl
+
+# Beep on error in ZLE
+unsetopt beep 
+
+# If a pattern for filename generation has no matches, print an error
+unsetopt nomatch
+
+# Miscellaneous commands
+zstyle ':completion:*' menu select
+zstyle :compinstall filename '/home/gabeg/.zshrc'
+autoload -Uz compinit
+compinit
+
+# case-insensitive (all),partial-word and then substring completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+# Emacs key bindings
 bindkey -e
-
 bindkey '^[^[[D' backward-word     # alt+left
 bindkey '^[^[[C' forward-word      # alt+right
 bindkey '^[Od' backward-word       # alt+left
@@ -14,36 +57,15 @@ bindkey '^[[3^' kill-word          # cltr+del
 bindkey '^H' backward-kill-word    # ctrl+backspace
 bindkey '^[[A' history-beginning-search-backward   # up arrow
 bindkey '^[[B' history-beginning-search-forward    # down arrow
-# echo $WORDCHARS
+bindkey "^[[3~" delete-char
 unset WORDCHARS
-
 autoload -U select-word-style
 select-word-style bash
 
-## Add special keys to use
-typeset -A key
-
-key[Home]=${terminfo[khome]}
-key[End]=${terminfo[kend]}
-key[Insert]=${terminfo[kich1]}
-key[Delete]=${terminfo[kdch1]}
-key[Up]=${terminfo[kcuu1]}
-key[Down]=${terminfo[kcud1]}
-key[Left]=${terminfo[kcub1]}
-key[Right]=${terminfo[kcuf1]}
-key[PageUp]=${terminfo[kpp]}
-key[PageDown]=${terminfo[knp]}
-
-[[ -n "${key[Home]}"     ]]  && bindkey  "${key[Home]}"     beginning-of-line
-[[ -n "${key[End]}"      ]]  && bindkey  "${key[End]}"      end-of-line
-[[ -n "${key[Insert]}"   ]]  && bindkey  "${key[Insert]}"   overwrite-mode
-[[ -n "${key[Delete]}"   ]]  && bindkey  "${key[Delete]}"   delete-char
-[[ -n "${key[Left]}"     ]]  && bindkey  "${key[Left]}"     backward-char
-[[ -n "${key[Right]}"    ]]  && bindkey  "${key[Right]}"    forward-char
-
-## Finally, make sure the terminal is in application mode, when zle is
-## active. Only then are the values from $terminfo valid.
-if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
+# Finally, make sure the terminal is in application mode, when zle is
+# active. Only then are the values from $terminfo valid.
+if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} ))
+then
     function zle-line-init () {
         printf '%s' "${terminfo[smkx]}"
     }
@@ -54,26 +76,33 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-finish
 fi
 
-## Edit prompt 
-autoload -U colors && colors   ## add colors to prompt
-case $UID in
-    0)
-        newline=$'\n'
-        PROMPT="%{$bg[white]%}%{$fg[black]%}%n@%M: %d\$%{$reset_color%}${newline}> "
-        # PROMPT="%D{%a %b %-d, %I:%M:%S}${newline}%{$bg[white]%}%{$fg[black]%}%n@%M: %d\$%{$reset_color%}${newline}> "
-        ;;
-    *)
-        newline=$'\n'
-        PROMPT="%{$bg[cyan]%}%n@%M: %d\$%{$reset_color%}${newline}> "
-        ;;
-esac
-
-## Aliases
-if [ -f ~/.aliases ]; then
-    . ~/.aliases
+# Aliases
+if [ -f "${HOME}/.aliases" ]
+then
+    . "${HOME}/.aliases"
 fi
 
-## Environment variables
-if [ -f ~/.zshenv ]; then
-    . ~/.zshenv
+# Environment variables
+if [ -f "${HOME}/.zshenv" ]
+then
+    . "${HOME}/.zshenv"
+fi
+
+# Amazon Web Services
+if [ -f "${HOME}/.awsenv" ]
+then
+    . "${HOME}/.awsenv"
+fi
+
+# SSH agent
+if [ ${UID} -ge 1000 ]
+then
+    if ! ps -u "$USER" -ww | grep [^]]ssh-agent > /dev/null
+    then
+        ssh-agent > ~/.ssh-agent-thing
+    fi
+    if [[ "${SSH_AGENT_PID}" == "" ]]
+    then
+        eval "$(<~/.ssh-agent-thing)" &> /dev/null
+    fi
 fi

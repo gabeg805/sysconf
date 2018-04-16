@@ -10,7 +10,7 @@
 (package-initialize)
 
 (custom-set-faces
- '(default ((t (:family "Input" :foundry "nil" :slant normal :weight normal :height 100 :width normal))))
+ '(default ((t (:family "Input" :foundry "nil" :slant normal :weight normal :height 100 :width normal :background "#303030"))))
 )
 
 ;; -----------------------------------------------------------------------------
@@ -131,16 +131,16 @@
     (message "Canceled exit")))
 
 ;; Change to solarized light theme
-(defun set-solarized-light ()
-  (interactive)
-  (customize-set-variable 'frame-background-mode 'light)
-  (load-theme 'solarized t))
+;; (defun set-solarized-light ()
+;;   (interactive)
+;;   (customize-set-variable 'frame-background-mode 'light)
+;;   (load-theme 'solarized t))
 
 ;; Change to solarized dark theme
-(defun set-solarized-dark ()
-  (interactive)
-  (customize-set-variable 'frame-background-mode 'dark)
-  (load-theme 'solarized t))
+;; (defun set-solarized-dark ()
+;;   (interactive)
+;;   (customize-set-variable 'frame-background-mode 'dark)
+;;   (load-theme 'solarized t))
 
 ;; -----------------------------------------------------------------------------
 ;; Keybindings
@@ -171,8 +171,8 @@
 (global-set-key (kbd "C-x C-c") 'ask-before-closing)
 
 ;; Color theme
-(global-set-key (kbd "C-c l") 'set-solarized-light)
-(global-set-key (kbd "C-c d") 'set-solarized-dark)
+;; (global-set-key (kbd "C-c l") 'set-solarized-light)
+;; (global-set-key (kbd "C-c d") 'set-solarized-dark)
 
 ;; -----------------------------------------------------------------------------
 ;; Remove unwanted windows
@@ -182,28 +182,80 @@
 (setq inhibit-startup-screen t)
 
 ;; *scratch* empty.
-(setq initial-scratch-message "")
-(setq-default message-log-max nil)
+;; (setq initial-scratch-message "")
+;; (setq-default message-log-max nil)
 
 ;; Completion buffer
-(add-hook 'minibuffer-exit-hook 'remove-completion-buffer)
-(remove-message-buffer)
+;; (add-hook 'minibuffer-exit-hook 'remove-completion-buffer)
+;; (remove-message-buffer)
 
 ;; -----------------------------------------------------------------------------
 ;; Custom themes
 ;; -----------------------------------------------------------------------------
 
+;; (font-lock-add-keywords 'shell-script-mode
+;;     '(((regexp-opt '("local" "exit" "if" "then" "elif" "else" "fi") t) 1 font-lock-type-face)))
+;; ! case  coproc  do done elif else esac fi for function if in select then until while
+;;        { } time [[ ]]
+;; :,  true,
+;;        false,  and  test builtins do not accept options and do not treat -- specially.  The
+;;        exit, logout, return, break, continue, let, and shift
+;; Added by me for above: ., source, break, builtin, cd, continue, declare, typeset, echo, eval, exec, exit, export, hash, help, kill, let, local, logout, readarray, popd, printf, pushd, popd, pwd, read, readonly, return, set, shift, shopt, test, trap, type, umask, unset, wait
+
+;; (defface variable-in-string-face
+;;   '((t (:foreground "#32c67f")))
+;;   "Used in text-mode and friends for exactly one space after a period.")
+
+  ;; '(font-lock-builtin-face       ((t (:foreground "#ec257f"))))
+  ;; '(font-lock-comment-face       ((t (:foreground "#a6a6a6"))))
+  ;; '(font-lock-constant-face      ((t (:bold t :foreground "#ff5079"))))
+  ;; '(font-lock-doc-face           ((t (:foreground "#ce9fe8"))))
+  ;; '(font-lock-function-name-face ((t (:bold t :foreground "#2525ec"))))
+  ;; '(font-lock-keyword-face       ((t (:bold t :foreground "#cd25cd"))))
+  ;; '(font-lock-preprocessor-face  ((t (:italic nil :foreground "#0099cc"))))
+  ;; '(font-lock-string-face        ((t (:foreground "#008043"))))
+  ;; '(font-lock-type-face          ((t (:foreground "#a0db8e"))))
+  ;; '(font-lock-variable-face      ((t (:foreground "#7ce700"))))
+
+;; (font-lock-add-keywords 'sh-mode '(("\\(\\${.*?}\\)" 1 'variable-in-string-face prepend)))
+
+;; (font-lock-add-keywords 'sh-mode
+;;  '(("\\(cd\\|continue\\|declare\\|echo\\|exit\\|local\\|return\\|shift\\)" 1
+;;     'font-lock-builtin-face prepend)))
+
+;; (font-lock-add-keywords 'sh-mode
+;;  '(("\\(if\\|then\\|elif\\|else\\|fi\\|case\\|in\\|esac\\|for\\|done\\|do\\|while\\)" 1
+;;     'font-lock-keyword-face prepend)))
+
+
+;; (defvar html-mode-keywords
+;;   '(("<\\(/?\\(em\\|p\\|q\\|h[r1-6]\\|pre\\|code\\|b\\(lockquote\\|r\\)?\\|i\\|ol\\|ul\\|li\\|center\\)\\)>" 1 font-lock-type-face)
+;;     ("title=\\|re[lv]=\\|h\\(ref=\\|ttp-equiv=\\)\\|content=\\|name=" . font-lock-variable-name-face)
+;;     ("<\\(a\\)" 1 font-lock-function-name-face)
+;;     ("\\(/a\\)>" 1 font-lock-function-name-face)
+;;     ("\t" . 'show-paren-mismatch-face)))
+
+;; (font-lock-add-keywords 'html-mode html-mode-keywords)
+
+
+
+;; Custom modes
+;; (add-to-list 'load-path "/home/gabeg/.emacs.d/user-elisp/modes/")
+;; (load "arduino-mode")
+;; (load "php-mode")
+;; (load "sh-script")
+
 ;; Load theme
 ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized/")
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/user-elisp/themes/")
 ;; (customize-set-variable 'frame-background-mode 'dark)
-;; (load-theme 'solarized t)
+;; (load-theme 'monokai t)
 
 ;; ;; Set theme mode
 ;; (set-frame-parameter nil 'background-mode 'dark)
 ;; (set-terminal-parameter nil 'background-mode 'dark)
 ;; (enable-theme 'solarized)
 
-;; (add-to-list 'load-path "/home/gabeg/.emacs.d/user-elisp/modes")
 
 ;; (add-hook 'after-make-frame-functions
 ;;           (lambda (frame)   

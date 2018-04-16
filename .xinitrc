@@ -17,4 +17,4 @@ background="${HOME}/projects/sysconf/arch_linux_mnts.png"
 [ -f "${HOME}/.Xresources" ] && xrdb -merge "${HOME}/.Xresources"
 [ -f "${HOME}/.Xmodmap" ]    && xmodmap "${HOME}/.Xmodmap"
 
-exec i3
+exec dbus-run-session i3
