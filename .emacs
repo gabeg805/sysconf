@@ -2,15 +2,13 @@
 ;; Default custom sets
 ;; -----------------------------------------------------------------------------
 
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
-
 (custom-set-faces
- '(default ((t (:family "Input" :foundry "nil" :slant normal :weight normal :height 100 :width normal :background "#303030"))))
+  '(default ((t (:family "Input" :foundry "nil" :slant normal :weight normal
+                 :height 100 :width normal :foreground "#ffffff"
+                 :background "#303030"))))
+  '(font-lock-comment-face  ((t (:foreground "#777777"))))
+  '(font-lock-constant-face ((t (:foreground "#e79600"))))
+  '(sh-quoted-exec          ((t (:bold t :foreground "#1fc4eb"))))
 )
 
 ;; -----------------------------------------------------------------------------
@@ -46,7 +44,7 @@
 ;; Changing highlight region defaults
 (transient-mark-mode 1)
 (set-face-attribute 'region nil
-                    :background "#ffe34c"
+                    :background "#222222"
                     :foreground nil
                     :inherit t)
 
@@ -55,7 +53,7 @@
 (global-hl-line-mode 1)
 (setq hl-line-sticky-flag 1)
 (set-face-attribute 'hl-line nil
-                    :background "#e5e5e5"
+                    :background "#3f3f3f"
                     :foreground nil
                     :inherit t)
 
@@ -77,29 +75,6 @@
 ;; -----------------------------------------------------------------------------
 ;; Indentation
 ;; -----------------------------------------------------------------------------
-
-;; General identation preferences
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
-(setq indent-line-function 'insert-tab)
-(setq tab-stop-list (number-sequence 4 200 4))
-
-;; Python
-(add-hook 'python-mode-hook '(lambda () 
- (setq python-indent 4)))
-
-;; Disable auto indent
-(add-hook 'after-change-major-mode-hook '(lambda () (electric-indent-mode 0)))
-
-;; LaTeX
-(setq LaTeX-indent-level 4)
-(setq LaTeX-item-indent 0)
-(setq TeX-brace-indent-level 4)
-(setq font-lock-maximum-decoration '((latex-mode . 2)))
-
-;; C
-(setq c-default-style "linux"
-      c-basic-offset 4)
 
 ;; -----------------------------------------------------------------------------
 ;; Functions
@@ -130,49 +105,10 @@
         (save-buffers-kill-emacs))
     (message "Canceled exit")))
 
-;; Change to solarized light theme
-;; (defun set-solarized-light ()
-;;   (interactive)
-;;   (customize-set-variable 'frame-background-mode 'light)
-;;   (load-theme 'solarized t))
-
-;; Change to solarized dark theme
-;; (defun set-solarized-dark ()
-;;   (interactive)
-;;   (customize-set-variable 'frame-background-mode 'dark)
-;;   (load-theme 'solarized t))
-
 ;; -----------------------------------------------------------------------------
 ;; Keybindings
 ;; -----------------------------------------------------------------------------
 
-;; Unset keybindings
-(global-unset-key "\C-x\C-z")
-(global-unset-key "\C-z")
-(global-unset-key "\C-j")
-(global-unset-key "\M-r")
-(global-unset-key "\C-xb")
-
-;; Set keybindings
-(global-set-key "\C-xw" 'count-words)
-(global-set-key "\M-," 'beginning-of-buffer)
-(global-set-key "\M-." 'end-of-buffer)
-(global-set-key "\M-r" 'query-replace)
-(global-set-key "\M-s" 'switch-to-buffer)
-(global-set-key "\M-f" 'forward-word)
-(global-set-key "\M-b" 'backward-word)
-(global-set-key "\C-f" 'forward-char)
-(global-set-key "\C-b" 'backward-char)
-(global-set-key "\C-xc" 'set-fill-column)
-;; (global-set-key "\C-xf" 'fill-individual-paragraphs)
-(global-set-key "\C-xp" 'fill-paragraph)
-(global-set-key (kbd "<f5>") 'eval-buffer)
-(global-set-key "\C-xb" 'backward-kill-line) 
-(global-set-key (kbd "C-x C-c") 'ask-before-closing)
-
-;; Color theme
-;; (global-set-key (kbd "C-c l") 'set-solarized-light)
-;; (global-set-key (kbd "C-c d") 'set-solarized-dark)
 
 ;; -----------------------------------------------------------------------------
 ;; Remove unwanted windows
@@ -193,73 +129,11 @@
 ;; Custom themes
 ;; -----------------------------------------------------------------------------
 
-;; (font-lock-add-keywords 'shell-script-mode
-;;     '(((regexp-opt '("local" "exit" "if" "then" "elif" "else" "fi") t) 1 font-lock-type-face)))
-;; ! case  coproc  do done elif else esac fi for function if in select then until while
-;;        { } time [[ ]]
-;; :,  true,
-;;        false,  and  test builtins do not accept options and do not treat -- specially.  The
-;;        exit, logout, return, break, continue, let, and shift
-;; Added by me for above: ., source, break, builtin, cd, continue, declare, typeset, echo, eval, exec, exit, export, hash, help, kill, let, local, logout, readarray, popd, printf, pushd, popd, pwd, read, readonly, return, set, shift, shopt, test, trap, type, umask, unset, wait
-
-;; (defface variable-in-string-face
-;;   '((t (:foreground "#32c67f")))
-;;   "Used in text-mode and friends for exactly one space after a period.")
-
-  ;; '(font-lock-builtin-face       ((t (:foreground "#ec257f"))))
-  ;; '(font-lock-comment-face       ((t (:foreground "#a6a6a6"))))
-  ;; '(font-lock-constant-face      ((t (:bold t :foreground "#ff5079"))))
-  ;; '(font-lock-doc-face           ((t (:foreground "#ce9fe8"))))
-  ;; '(font-lock-function-name-face ((t (:bold t :foreground "#2525ec"))))
-  ;; '(font-lock-keyword-face       ((t (:bold t :foreground "#cd25cd"))))
-  ;; '(font-lock-preprocessor-face  ((t (:italic nil :foreground "#0099cc"))))
-  ;; '(font-lock-string-face        ((t (:foreground "#008043"))))
-  ;; '(font-lock-type-face          ((t (:foreground "#a0db8e"))))
-  ;; '(font-lock-variable-face      ((t (:foreground "#7ce700"))))
-
-;; (font-lock-add-keywords 'sh-mode '(("\\(\\${.*?}\\)" 1 'variable-in-string-face prepend)))
-
-;; (font-lock-add-keywords 'sh-mode
-;;  '(("\\(cd\\|continue\\|declare\\|echo\\|exit\\|local\\|return\\|shift\\)" 1
-;;     'font-lock-builtin-face prepend)))
-
-;; (font-lock-add-keywords 'sh-mode
-;;  '(("\\(if\\|then\\|elif\\|else\\|fi\\|case\\|in\\|esac\\|for\\|done\\|do\\|while\\)" 1
-;;     'font-lock-keyword-face prepend)))
-
-
-;; (defvar html-mode-keywords
-;;   '(("<\\(/?\\(em\\|p\\|q\\|h[r1-6]\\|pre\\|code\\|b\\(lockquote\\|r\\)?\\|i\\|ol\\|ul\\|li\\|center\\)\\)>" 1 font-lock-type-face)
-;;     ("title=\\|re[lv]=\\|h\\(ref=\\|ttp-equiv=\\)\\|content=\\|name=" . font-lock-variable-name-face)
-;;     ("<\\(a\\)" 1 font-lock-function-name-face)
-;;     ("\\(/a\\)>" 1 font-lock-function-name-face)
-;;     ("\t" . 'show-paren-mismatch-face)))
-
-;; (font-lock-add-keywords 'html-mode html-mode-keywords)
-
-
-
-;; Custom modes
-;; (add-to-list 'load-path "/home/gabeg/.emacs.d/user-elisp/modes/")
+(add-to-list 'load-path "~/.emacs.d/usr/init/")
+(add-to-list 'load-path "~/.emacs.d/usr/mode/")
+(load "indentation")
+(load "keybindings")
+(load "shell-highlighting")
 ;; (load "arduino-mode")
 ;; (load "php-mode")
 ;; (load "sh-script")
-
-;; Load theme
-;; (add-to-list 'custom-theme-load-path "~/.emacs.d/emacs-color-theme-solarized/")
-;; (add-to-list 'custom-theme-load-path "~/.emacs.d/user-elisp/themes/")
-;; (customize-set-variable 'frame-background-mode 'dark)
-;; (load-theme 'monokai t)
-
-;; ;; Set theme mode
-;; (set-frame-parameter nil 'background-mode 'dark)
-;; (set-terminal-parameter nil 'background-mode 'dark)
-;; (enable-theme 'solarized)
-
-
-;; (add-hook 'after-make-frame-functions
-;;           (lambda (frame)   
-;;             (let ((mode (if (display-graphic-p frame) 'dark 'dark)))
-;;               (set-frame-parameter frame 'background-mode mode)
-;;               (set-terminal-parameter frame 'background-mode mode))
-;;             (enable-theme 'solarized)))
