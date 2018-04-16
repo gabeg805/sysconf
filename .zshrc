@@ -103,6 +103,9 @@ then
     fi
     if [[ "${SSH_AGENT_PID}" == "" ]]
     then
-        eval "$(<~/.ssh-agent-thing)" &> /dev/null
+        if [ -f ~/.ssh-agent-thing ]
+        then
+            eval "$(<~/.ssh-agent-thing)" &> /dev/null
+        fi
     fi
 fi
