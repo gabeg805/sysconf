@@ -13,8 +13,7 @@
 (setq tab-stop-list (number-sequence 4 200 4))
 
 ;; Python
-(add-hook 'python-mode-hook '(lambda () 
- (setq python-indent 4)))
+(add-hook 'python-mode-hook '(lambda () (setq python-indent 4)))
 
 ;; Disable auto indent
 (add-hook 'after-change-major-mode-hook '(lambda () (electric-indent-mode 0)))
@@ -26,5 +25,4 @@
 (setq font-lock-maximum-decoration '((latex-mode . 2)))
 
 ;; C
-(setq c-default-style "linux"
-      c-basic-offset 4)
+(setq c-default-style "linux" c-basic-offset 4)
