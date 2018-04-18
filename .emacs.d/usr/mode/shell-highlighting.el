@@ -38,7 +38,8 @@
 
 ;; Blue/green
 (defface shell-function-bin-face
-  '((t (:bold t :foreground "#45e0c0")))
+  ;; '((t (:bold t :foreground "#45e0c0")))
+  '((t (:bold t :foreground "#90ceeb")))
   "Used in sh-mode for commands that are in /usr/bin.")
 
 ;; Tan
@@ -48,8 +49,18 @@
 
 ;; Pink
 (defface shell-string-face
-  '((t (:foreground "#cd52a9")))
+  '((t (:bold nil :foreground "#cd52a9")))
   "Used in sh-mode for strings.")
+
+;; Gray
+(defface shell-comment-face
+  '((t (:bold nil :foreground "#777777")))
+  "Used in sh-mode for comments.")
+
+;; Highlight comments (to override regular words being highlighted within
+;; comments)
+(font-lock-add-keywords 'sh-mode
+  '(("^[ \t]*\\(\\#.*\\)" 1 'shell-comment-face prepend)))
 
 ;; Highlight numbers (if using comment below, use \\b instead of \b)
 (add-hook 'after-change-major-mode-hook
@@ -82,7 +93,7 @@
 
 ;; Highlight builtin commands
 (font-lock-add-keywords 'sh-mode
- '(("^[ \t]*\\(\\b\\.\\b\\|\\b\:\\b\\|\\bsource\\b\\|\\bbuiltin\\b\\|\\bcd\\b\\|\\bdeclare\\b\\|\\btypeset\\b\\|\\becho\\b\\|\\beval\\b\\|\\bexec\\b\\|\\bexport\\b\\|\\bhash\\b\\|\\blet\\b\\|\\blocal\\b\\|\\breadarray\\b\\|\\bpopd\\b\\|\\bprintf\\b\\|\\bpushd\\b\\|\\bpopd\\b\\|\\bpwd\\b\\|\\bread\\b\\|\\breadonly\\b\\|\\bset\\b\\|\\bshopt\\b\\|\\btest\\b\\|\\btime\\b\\|\\btype\\b\\|\\bumask\\b\\|\\bunset\\b\\|\\bwait\\b\\)"
+ '(("^[ \t]*\\(\\b\\.\\b\\|\\b\\:\\b\\|\\bsource\\b\\|\\bbuiltin\\b\\|\\bcd\\b\\|\\bdeclare\\b\\|\\btypeset\\b\\|\\becho\\b\\|\\beval\\b\\|\\bexec\\b\\|\\bexport\\b\\|\\bhash\\b\\|\\blet\\b\\|\\blocal\\b\\|\\breadarray\\b\\|\\bpopd\\b\\|\\bprintf\\b\\|\\bpushd\\b\\|\\bpopd\\b\\|\\bpwd\\b\\|\\bread\\b\\|\\breadonly\\b\\|\\bset\\b\\|\\bshopt\\b\\|\\btest\\b\\|\\btime\\b\\|\\btype\\b\\|\\bumask\\b\\|\\bunset\\b\\|\\bwait\\b\\)"
     1 'shell-builtin-face prepend)))
 
 (font-lock-add-keywords 'sh-mode
@@ -99,8 +110,8 @@
 (font-lock-add-keywords 'sh-mode
   '(("^[ \t]*local[ \t]*\\([a-zA-Z_][a-zA-Z0-9_]*\\)="
      1 'shell-variable-face prepend)))
-(font-lock-add-keywords 'sh-mode
-  '(("\\(\\${.*?}\\)" 1 'shell-variable-face prepend)))
+;; (font-lock-add-keywords 'sh-mode
+;;   '(("\\(\\${.*?}\\)" 1 'shell-variable-face prepend)))
 
 ;; Highlight strings
 (font-lock-add-keywords 'sh-mode
