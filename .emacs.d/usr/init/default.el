@@ -8,8 +8,8 @@
 
 ;; Custom faces
 (custom-set-faces
-  '(default ((t (:family "Input" :foundry "nil" :slant normal :weight normal
-                 :height 100 :width normal :foreground "#ffffff"
+  '(default ((t (:family "Monaco" :foundry "nil" :slant normal :weight normal
+                 :height 90 :width normal :foreground "#ffffff"
                  :background "#303030"))))
   '(font-lock-comment-face  ((t (:foreground "#777777"))))
   '(font-lock-constant-face ((t (:foreground "#e79600"))))

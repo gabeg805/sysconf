@@ -71,3 +71,9 @@ URxvt.visualBell         : true
 URxvt.matcher.button     : 1
 URxvt.iso14755           : false
 URxvt.iso14755_52        : false
+
+! Xft.antialias:  1
+! Xft.hinting:    1
+! Xft.hintstyle:  hintfull
+! Xft.lcdfilter:  lcddefault
+! Xft.rgba:       rgb
