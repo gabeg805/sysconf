@@ -44,7 +44,7 @@
 
 ;; Tan
 (defface shell-variable-face
-  '((t (:foreground "#cdbe70")))
+  '((t (:bold nil :foreground "#cdbe70")))
   "Used in sh-mode for variables being defined.")
 
 ;; Pink
@@ -89,6 +89,14 @@
 
 (font-lock-add-keywords 'sh-mode
  '(("\;[ \t]*\\(\\bbreak\\b\\|\\bcontinue\\b\\|\\bexit\\b\\|\\bkill\\b\\|\\blogout\\b\\|\\breturn\\b\\|\\bshift\\b\\|\\btrap\\b\\)"
+    1 'shell-builtin-ctrl-face prepend)))
+
+(font-lock-add-keywords 'sh-mode
+ '(("\|\|[ \t]*\\(\\bbreak\\b\\|\\bcontinue\\b\\|\\bexit\\b\\|\\bkill\\b\\|\\blogout\\b\\|\\breturn\\b\\|\\bshift\\b\\|\\btrap\\b\\)"
+    1 'shell-builtin-ctrl-face prepend)))
+
+(font-lock-add-keywords 'sh-mode
+ '(("\&\&[ \t]*\\(\\bbreak\\b\\|\\bcontinue\\b\\|\\bexit\\b\\|\\bkill\\b\\|\\blogout\\b\\|\\breturn\\b\\|\\bshift\\b\\|\\btrap\\b\\)"
     1 'shell-builtin-ctrl-face prepend)))
 
 ;; Highlight builtin commands

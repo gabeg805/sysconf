@@ -31,6 +31,9 @@ export TEXMFHOME=${HOME}/.texmf
 # Force Mullvad to use GTK3
 export MULLVAD_USE_GTK3=yes
 
+# Android SDK home
+export ANDROID_HOME=/opt/android-sdk
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]
 then
@@ -39,5 +42,5 @@ then
 fi
 
 # Editing The Path
-PATH="${PATH}":"${HOME}/projects/bin:${HOME}/projects/lib"
+PATH="${PATH}":"${HOME}/projects/bin":"${HOME}/bin":"${HOME}/projects/lib":"${HOME}/lib"
 typeset -U path
