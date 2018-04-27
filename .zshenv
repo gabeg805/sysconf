@@ -25,6 +25,9 @@ export VISUAL=/usr/bin/emacs
 export EDITOR=/usr/bin/emacs
 export SUDO_EDITOR=/usr/bin/emacs
 
+# Disable warnings from GTK accessibility
+export NO_AT_BRIDGE=1
+
 # Latex user class files
 export TEXMFHOME=${HOME}/.texmf
 
