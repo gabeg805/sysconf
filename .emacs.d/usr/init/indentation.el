@@ -26,3 +26,9 @@
 
 ;; C
 (setq c-default-style "linux" c-basic-offset 4)
+(c-set-offset 'class-open 0)
+(c-set-offset 'inline-open 0)
+(c-set-offset 'substatement-open 0)
+
+;; Android XML
+(setq nxml-child-indent 4 nxml-attribute-indent 4)

@@ -31,3 +31,10 @@
 (add-hook 'minibuffer-exit-hook 'remove-completion-buffer)
 (add-hook 'minibuffer-exit-hook 'remove-message-buffer)
 (add-hook 'minibuffer-exit-hook 'remove-scratch-buffer)
+
+;; Add directory name to buffer name
+(defun mode-line-buffer-file-parent-directory ()
+  (when buffer-file-name
+    (concat "[" (file-name-nondirectory (directory-file-name (file-name-directory buffer-file-name))) "]")))
+(setq-default mode-line-buffer-identification
+      (cons (car mode-line-buffer-identification) '((:eval (mode-line-buffer-file-parent-directory)))))

@@ -6,7 +6,7 @@
 # ------------------------------------------------------------------------------
 
 # Xmodmap
-if [ -f "${HOME}/.Xmodmap" ]
+if [ -n "${DISPLAY}" -a -f "${HOME}/.Xmodmap" ]
 then
     xmodmap "${HOME}/.Xmodmap"
 fi

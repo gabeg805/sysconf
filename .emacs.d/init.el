@@ -15,3 +15,7 @@
 (load "highlight")
 (load "buffers")
 (load "shell-highlighting")
+
+;; (add-to-list 'load-path "~/.emacs.d/usr/mode/android-mode/")
+;; (require 'android-mode)
+;; (custom-set-variables '(android-mode-sdk-dir "/opt/android-sdk/"))

@@ -1,6 +1,8 @@
 # ------------------------------------------------------------------------------
+# 
 # File: ~/.zshenv
 # Author: Gabe Gonzalez
+# 
 # Brief: Set environment variables.
 # 
 # ------------------------------------------------------------------------------
@@ -35,7 +37,7 @@ export TEXMFHOME=${HOME}/.texmf
 export MULLVAD_USE_GTK3=yes
 
 # Android SDK home
-export ANDROID_HOME=/opt/android-sdk
+# export ANDROID_HOME=/opt/android-sdk
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]

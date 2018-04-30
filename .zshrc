@@ -1,6 +1,8 @@
 # ------------------------------------------------------------------------------
+# 
 # File: ~/.zshrc
 # Author: Gabe Gonzalez
+# 
 # Brief: Interactive shell configuration. Started every time a terminal is run.
 # 
 # ------------------------------------------------------------------------------

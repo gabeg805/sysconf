@@ -1,20 +1,39 @@
 #!/bin/sh
-#
-# ~/.xinitrc
-#
-# Executed by startx (run your window manager from here)
+# ------------------------------------------------------------------------------
+# 
+# File: ~/.xinitrc
+# Author: Gabe Gonzalez
+# 
+# Brief: Executed by startx (run your window manager from here).
+# 
+# ------------------------------------------------------------------------------
 
-if [ -d /etc/X11/xinit/xinitrc.d ]; then
-    for f in /etc/X11/xinit/xinitrc.d/*; do
-        [ -x "${f}" ] && . "${f}"
+if [ -d /etc/X11/xinit/xinitrc.d ]
+then
+    for f in /etc/X11/xinit/xinitrc.d/*
+    do
+        if [ -x "${f}" ]
+        then
+            . "${f}"
+        fi
     done
     unset f
 fi
 
 background="${HOME}/projects/sysconf/arch_linux_mnts.png"
+if [ -f "${background}" ]
+then
+    feh --bg-scale "${background}"
+fi
 
-[ -f "${background}" ]       && feh --bg-scale "${background}"
-[ -f "${HOME}/.Xresources" ] && xrdb -merge "${HOME}/.Xresources"
-[ -f "${HOME}/.Xmodmap" ]    && xmodmap "${HOME}/.Xmodmap"
+if [ -f "${HOME}/.Xresources" ]
+then
+    xrdb -merge "${HOME}/.Xresources"
+fi
 
-exec dbus-run-session i3
+if [ -f "${HOME}/.Xmodmap" ]
+then
+    xmodmap "${HOME}/.Xmodmap"
+fi
+
+exec i3
