@@ -50,3 +50,15 @@ if (x): print 'Hello'
 import logging
 help(logging
 )
+import numpy
+x = [1,2,3,4,5,6,7,8,9]
+x[6-3:6]
+x[8-3:8]
+math.mean(x[8-3:8])
+import math
+math.mean(x[8-3:8])
+math.average(x[8-3:8])
+math.avg(x[8-3:8])
+mean(x[8-3:8])
+import numpy
+numpy.mean(x[8-3:8])
