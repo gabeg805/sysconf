@@ -1,0 +1,75 @@
+ls -lrt
+cd ../../../../
+cd ../../../../script/
+./android-app.sh -a NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -e -n NFCAlarmClock
+ps aux | grep emulator
+ps aux | grep emul
+ps aux | grep em
+urxvt &
+exit
+cd ../../../../../../../../
+cd script/
+./android-app.sh -a
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+ls -lrt
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+firefox
+firefox --no-remote
+firefox --no-remote --private-window
+urxvt &
+urxvt &
+exit
+cd ..
+cd mipmap-hdpi/
+ls baseline*
+baseline_music_note_white_18dp.png  baseline_nfc_white_18dp.png
+cd ../../../
+cd ../../../../script/
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+adb logcat
+./android-app.sh -a -n NFCAlarmClock
+ls -lrt ../dev/NFCAlarmClock/app/src/main/res/mipmap-hdpi/
+feh ../dev/NFCAlarmClock/app/src/main/res/mipmap-hdpi/baseline_music_note_white_18dp.png
+ls -lrt ../dev/NFCAlarmClock/app/src/main/res/mipmap-hdpi/
+exit
+cd ../../../../../
+cd ../../script/
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+./android-app.sh -a -n NFCAlarmClock
+exit

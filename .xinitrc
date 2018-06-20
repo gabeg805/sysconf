@@ -20,10 +20,10 @@ then
     unset f
 fi
 
-background="${HOME}/projects/sysconf/arch_linux_mnts.png"
+background="${HOME}/projects/sysconf/images/background"
 if [ -f "${background}" ]
 then
-    feh --bg-scale "${background}"
+    feh --bg-fill "${background}"
 fi
 
 if [ -f "${HOME}/.Xresources" ]
@@ -35,5 +35,7 @@ if [ -f "${HOME}/.Xmodmap" ]
 then
     xmodmap "${HOME}/.Xmodmap"
 fi
+
+xcompmgr &
 
 exec i3
