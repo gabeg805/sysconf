@@ -73,3 +73,4 @@ cd ../../script/
 ./android-app.sh -a -n NFCAlarmClock
 ./android-app.sh -a -n NFCAlarmClock
 exit
+man systemd.path

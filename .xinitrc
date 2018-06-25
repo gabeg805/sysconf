@@ -31,10 +31,16 @@ then
     xrdb -merge "${HOME}/.Xresources"
 fi
 
-if [ -f "${HOME}/.Xmodmap" ]
+if [ -f "${HOME}/.xbindkeysrc" ]
 then
-    xmodmap "${HOME}/.Xmodmap"
+    setxkbmap -option caps:none
+    xbindkeys
 fi
+
+# if [ -f "${HOME}/.Xmodmap" ]
+# then
+#     xmodmap "${HOME}/.Xmodmap"
+# fi
 
 xcompmgr &
 
