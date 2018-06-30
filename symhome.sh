@@ -10,14 +10,13 @@
 # ------------------------------------------------------------------------------
 
 ##
-# Source utilities.
+# Project name.
 ##
-. "io.sh"
+PROJECT="${0##*/}"
 
 ##
 # Options.
 ##
-VERBOSE=true
 CREATE=
 
 ##
@@ -30,11 +29,18 @@ EXIT_NO_OPT_ENTERED=10
 ##
 main()
 {
-    local short="hvc"
-    local long="help,verbose,create"
-
     # Parse options
-    cli_parse "${PROJECT}" "${short}" "${long}" "${@}" 
+    local short="hc"
+    local long="help,create"
+    local args=$(getopt -o "${short}" --long "${long}" --name "${PROJECT}" \
+                        -- "${@}")
+    if [ $? -ne 0 ]
+    then
+        usage
+        exit 1
+    fi
+    eval set -- "${args}"
+
     while true
     do
         case "${1}" in
@@ -42,19 +48,9 @@ main()
                 usage
                 exit 0
                 ;;
-
-            -v|--verbose)
-                VERBOSE=true
-                ;;
-
             -c|--create)
                 CREATE=true
                 ;;
-
-            --)
-                break
-                ;;
-
             *)
                 break
                 ;;
@@ -67,8 +63,7 @@ main()
     then
         symhome_create
     else
-        usage
-        exit ${EXIT_NO_OPT_ENTERED}
+        :
     fi
 
     exit $?
@@ -84,9 +79,6 @@ usage()
     echo "Options:"
     echo "    -h, --help"
     echo "        Print program usage."
-    echo 
-    echo "    -v, --verbose"
-    echo "        Verbose output."
     echo 
     echo "    -c, --create"
     echo "        Create symbolic links of the system files and set them in the"
