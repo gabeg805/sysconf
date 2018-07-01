@@ -17,7 +17,7 @@ PROJECT="${0##*/}"
 ##
 # Options.
 ##
-CREATE=
+RUN=
 
 ##
 # Exit statuses.
@@ -30,8 +30,8 @@ EXIT_NO_OPT_ENTERED=10
 main()
 {
     # Parse options
-    local short="hc"
-    local long="help,create"
+    local short="hr"
+    local long="help,run"
     local args=$(getopt -o "${short}" --long "${long}" --name "${PROJECT}" \
                         -- "${@}")
     if [ $? -ne 0 ]
@@ -48,8 +48,8 @@ main()
                 usage
                 exit 0
                 ;;
-            -c|--create)
-                CREATE=true
+            -r|--run)
+                RUN=true
                 ;;
             *)
                 break
@@ -59,9 +59,9 @@ main()
     done
 
     # Run options
-    if [ -n "${CREATE}" ]
+    if [ -n "${RUN}" ]
     then
-        symhome_create
+        symconf_run
     else
         :
     fi
@@ -80,45 +80,40 @@ usage()
     echo "    -h, --help"
     echo "        Print program usage."
     echo 
-    echo "    -c, --create"
-    echo "        Create symbolic links of the system files and set them in the"
-    echo "        user's home."
+    echo "    -r, --run"
+    echo "        Create symbolic links of the system files."
 }
 
 ##
-# Create symbolic links.
+# Create all symbolic links.
 ##
-symhome_create()
+symconf_run()
 {
+    symconf_mksym .aliases "${HOME}"
+    symconf_mksym .pyhistory "${HOME}"
+    symconf_mksym .pystartup "${HOME}"
+    symconf_mksym .xbindkeysrc "${HOME}"
+    symconf_mksym .xinitrc "${HOME}"
+    symconf_mksym .Xmodmap "${HOME}"
+    symconf_mksym .Xresources "${HOME}"
+    symconf_mksym .zshenv "${HOME}"
+    symconf_mksym .zshrc "${HOME}"
+    symconf_mksym .texmf "${HOME}"
+    symconf_mksym .urxvt "${HOME}"
+    symconf_mksym i3 "${HOME}/.config"
+    symconf_mksym i3blocks "${HOME}/.config"
+}
+
+##
+# Create a symbolic link.
+##
+symconf_mksym()
+{
+    local src="${1}"
+    local dst="${2}"
     local dir=$(readlink -e $(dirname "${0}"))
-    builtin cd "${HOME}"
-    for f in $(find "${dir}" -maxdepth 1)
-    do
-        if [ "${f}" == "${dir}" -o -e $(basename "${f}") ] \
-               || symhome_is_ignore "${f}"
-        then
-            continue
-        fi
-        ln -sv "${f}"
-    done
-}
-
-##
-# Check if input is a file/directory to ignore or if a symbolic link should be
-# made for it.
-##
-symhome_is_ignore()
-{
-    local input=$(basename "${1}")
-    local ignore=("images" ".fonts" ".git" ".urxvt" ".gitignore" "${PROJECT}")
-    for i in "${ignore[@]}"
-    do
-        if [ "${i}" == "${input}" ]
-        then
-            return 0
-        fi
-    done
-    return 1
+    builtin cd "${dst}"
+    ln -sv "${dir}/${src}"
 }
 
 ##
