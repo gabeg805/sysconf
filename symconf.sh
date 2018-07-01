@@ -13,6 +13,7 @@
 # Project name.
 ##
 PROJECT="${0##*/}"
+PROJECT_DIR=$(readlink -e $(dirname "${0}"))
 
 ##
 # Options.
@@ -109,11 +110,14 @@ symconf_run()
 ##
 symconf_mksym()
 {
-    local src="${1}"
+    local src="${PROJECT_DIR}/${1}"
     local dst="${2}"
-    local dir=$(readlink -e $(dirname "${0}"))
     builtin cd "${dst}"
-    ln -sv "${dir}/${src}"
+    if [ -e "${src}" ]
+    then
+        return
+    fi
+    ln -sv "${src}"
 }
 
 ##
