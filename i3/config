@@ -148,40 +148,30 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-for_window [class="^.*"] border pixel 2
-for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move down $height px
-
-gaps inner 2
-gaps outer 1
-
-smart_borders on
-smart_gaps on
-hide_edge_borders smart_no_gaps
-
-set $color-border	     #00dcf5
-set $color-bg            #171a1f
-set $color-focus         #1f5a95
-set $color-inactive      #34363a
-set $color-urgent        #e53935
-set $color-text          #f3f4f5
-set $color-text-inactive #8f8f8f
+#set $color-border	     #00dcf5
+#set $color-bg            #171a1f
+#set $color-focus         #1f5a95
+#set $color-inactive      #34363a
+#set $color-urgent        #e53935
+#set $color-text          #f3f4f5
+#set $color-text-inactive #8f8f8f
 
 #window colors
 #                       border        background      text
-client.focused          $color-border $color-border $color-text          $color-border
-client.unfocused        $color-bg     $color-bg     $color-text-inactive $color-bg
-client.focused_inactive $color-border $color-border $color-text          $color-border
-client.urgent           $color-urgent $color-urgent $color-text          $color-urgent
+#client.focused          $color-border $color-border $color-text          $color-border
+#client.unfocused        $color-bg     $color-bg     $color-text-inactive $color-bg
+#client.focused_inactive $color-border $color-border $color-text          $color-border
+#client.urgent           $color-urgent $color-urgent $color-text          $color-urgent
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
     status_command i3blocks
     position bottom
-    colors {
-        background $color-bg
-        focused_workspace  $color-focus    $color-focus    $color-text
-        inactive_workspace $color-inactive $color-inactive $color-text-inactive
-        urgent_workspace   $color-urgent   $color-urgent   $text-color
-    }
+#    colors {
+#        background $color-bg
+#        focused_workspace  $color-focus    $color-focus    $color-text
+#        inactive_workspace $color-inactive $color-inactive $color-text-inactive
+#        urgent_workspace   $color-urgent   $color-urgent   $text-color
+#    }
 }

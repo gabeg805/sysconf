@@ -72,7 +72,7 @@ border=#ffed10
 
 [battery]
 label=  
-command=echo "<span font='monospace'>$(/home/gabeg/projects/bin/batstat -s) </span>"
+command=echo "<span font='monospace'>$(/home/gabeg/projects/bin/battery -s) </span>"
 markup=pango
 instance=0
 interval=10
