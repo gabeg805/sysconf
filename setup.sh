@@ -175,7 +175,6 @@ setup_git_misc()
 	mkdir -pv misc
 	builtin cd misc
 	git clone http://github.com/Airblader/i3blocks-gaps
-	git clone ssh://git@github.com/gabeg805/arch
 	git clone ssh://git@github.com/gabeg805/resume
 	git clone ssh://git@github.com/gabeg805/website
 }
@@ -310,9 +309,16 @@ setup_mksym()
 	builtin cd "${dst}"
 	if [ -e "${src}" ]
 	then
-		return
+		local msg="Replace '$(basename "${src}")' in '${dst}'? "
+		local response=
+		read -p "${msg}" response
+		case "${response}" in
+			y|Y) ln -svf "${src}" ;;
+			*) return ;;
+		esac
+	else
+		ln -svi "${src}"
 	fi
-	ln -sv "${src}"
 }
 
 ##
