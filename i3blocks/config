@@ -26,13 +26,9 @@
 # Each block command defaults to the script name to avoid boilerplate.
 command=/usr/local/libexec/i3blocks/$BLOCK_NAME
 separator=false
-separator_block_width=8
+separator_block_width=4
 markup=none
 interval=5
-border_top=0
-border_left=0
-border_right=0
-border_bottom=2
 
 # border=#ff346d
 # border=#1ab872
@@ -45,13 +41,11 @@ border_bottom=2
 label= VPN:
 command=test -d /sys/class/net/tun0 && echo "<span font='monospace'>up </span>" || echo "<span font='monospace'>down </span>"
 markup=pango
-border=#e20096
 
 [wifi]
 label=  
 command=echo "<span font='monospace'>$(/home/gabeg/projects/bin/wifi) </span>"
 markup=pango
-border=#0025e2
 
 [brightness]
 label=  
@@ -59,7 +53,6 @@ command=echo "<span font='monospace'>$(/home/gabeg/projects/bin/bright -S) </spa
 markup=pango
 interval=once
 signal=11
-border=#25e200
 
 [volume]
 label=  
@@ -68,7 +61,6 @@ markup=pango
 instance=Master
 interval=once
 signal=10
-border=#ffed10
 
 [battery]
 label=  
@@ -76,11 +68,9 @@ command=echo "<span font='monospace'>$(/home/gabeg/projects/bin/battery -s) </sp
 markup=pango
 instance=0
 interval=10
-border=#e24c00
 
 [date]
 label=  
 command=echo "<span font='monospace'>$(date '+%a %B %-d %-I:%M:%S %p') </span>"; [[ -z "${BLOCK_BUTTON}" ]] || gsimplecal &
 markup=pango
 interval=1
-border=#e20025
