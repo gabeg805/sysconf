@@ -23,9 +23,9 @@ esac
 export PYTHONSTARTUP=${HOME}/.pystartup
 
 # Default Editor
-export VISUAL=/usr/bin/emacs
-export EDITOR=/usr/bin/emacs
-export SUDO_EDITOR=/usr/bin/emacs
+# export VISUAL=/usr/bin/emacs
+export EDITOR=/usr/bin/vim
+export SUDO_EDITOR=/usr/bin/vim
 
 # Disable warnings from GTK accessibility
 export NO_AT_BRIDGE=1

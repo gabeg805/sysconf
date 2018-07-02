@@ -226,6 +226,7 @@ setup_packages()
 		rxvt-unicode \
 		scrot \
 		transmission-gtk \
+		ttf-anonymous-pro \
 		ttf-dejavu \
 		ttf-droid \
 		ttf-inconsolata \

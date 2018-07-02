@@ -20,7 +20,7 @@ then
     unset f
 fi
 
-background="${HOME}/projects/sysconf/images/background"
+background="${HOME}/projects/system/images/background"
 if [ -f "${background}" ]
 then
     feh --bg-fill "${background}"
