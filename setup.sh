@@ -26,6 +26,8 @@ PACKAGE=
 # Exit statuses.
 ##
 EXIT_NO_OPT_ENTERED=10
+EXIT_SETUP_MAIN_PROJECT_DIR_DOES_NOT_EXIST=11
+EXIT_SETUP_DST_DOES_NOT_EXIST=12
 
 ##
 # Create symbolic links.
@@ -133,7 +135,7 @@ setup_git()
 {
 	if [ ! -d "${HOME}/projects" ]
 	then
-		return ${EXIT_SYMCONF_MAIN_PROJECT_DIR_DOES_NOT_EXIST}
+		return ${EXIT_SETUP_MAIN_PROJECT_DIR_DOES_NOT_EXIST}
 	fi
 	setup_git_personal
 	#setup_git_misc
@@ -305,10 +307,18 @@ setup_packages()
 ##
 setup_mksym()
 {
-	local src="${PROJECT_DIR}/${1}"
+	local file="${1}"
+	local src="${PROJECT_DIR}/${file}"
 	local dst="${2}"
-	builtin cd "${dst}"
-	if [ -e "${src}" ]
+
+	if [ ! -d "${dst}" ]
+	then
+		return ${EXIT_SETUP_DST_DOES_NOT_EXIST}
+	else
+		builtin cd "${dst}"
+	fi
+
+	if [ -e "${dst}/${file}" ]
 	then
 		local msg="Replace '$(basename "${src}")' in '${dst}'? "
 		local response=

@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Check for button clicks
+if [ -n "${BLOCK_BUTTON}" ]
+then
+	aria --title="$(battery)" > /dev/null
+fi
+
+# Get battery level
+bat=$(battery -S)
+int="${bat%%.*}" 
+color=
+
+echo "<span font='monospace'>${bat} </span>"
+echo "<span font='monospace'>${bat} </span>"
+
+# Get color
+if [ "${int}" -le 30 ]
+then
+	color="#ff0000"
+elif [ "${int}" -le 50 ]
+then
+	color="#ffa500"
+elif [ "${int}" -le 70 ]
+then
+	color="#ffff00"
+else
+	:
+fi
+
+echo "${color}"

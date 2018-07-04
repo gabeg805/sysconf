@@ -39,38 +39,37 @@ interval=5
 
 [vpn]
 label= VPN:
-command=test -d /sys/class/net/tun0 && echo "<span font='monospace'>up </span>" || echo "<span font='monospace'>down </span>"
+command=/home/gabeg/projects/system/i3blocks/vpn
 markup=pango
 
 [wifi]
 label=  
-command=echo "<span font='monospace'>$(/home/gabeg/projects/bin/wifi) </span>"
+command=/home/gabeg/projects/system/i3blocks/wifi
 markup=pango
 
 [brightness]
 label=  
-command=echo "<span font='monospace'>$(/home/gabeg/projects/bin/bright -S) </span>"
+command=/home/gabeg/projects/system/i3blocks/brightness
 markup=pango
 interval=once
 signal=11
 
 [volume]
 label=  
-command=echo "<span font='monospace'>$(/usr/local/libexec/i3blocks/volume) </span>"
+command=/home/gabeg/projects/system/i3blocks/volume
 markup=pango
 instance=Master
 interval=once
 signal=10
 
 [battery]
-label=  
-command=echo "<span font='monospace'>$(/home/gabeg/projects/bin/battery -s) </span>"
+label=  
+command=/home/gabeg/projects/system/i3blocks/battery
 markup=pango
-instance=0
 interval=10
 
 [date]
 label=  
-command=echo "<span font='monospace'>$(date '+%a %B %-d %-I:%M:%S %p') </span>"; [[ -z "${BLOCK_BUTTON}" ]] || gsimplecal &
+command=/home/gabeg/projects/system/i3blocks/date
 markup=pango
 interval=1

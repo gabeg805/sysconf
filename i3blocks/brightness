@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Check for button clicks
+if [ -n "${BLOCK_BUTTON}" ]
+then
+	aria --title="$(bright)" > /dev/null
+fi
+
+# Get brightness level
+bright=$(bright -S)
+
+echo "<span font='monospace'>${bright} </span>"
+echo "<span font='monospace'>${bright} </span>"
+echo 

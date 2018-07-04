@@ -15,8 +15,9 @@ export SAVEHIST=${HISTSIZE}
 # Add colors to prompt
 autoload -U colors && colors
 case ${UID} in
-    0) PROMPT="%{$bg[white]%}%{$fg[black]%}%n@%M: %d\$%{$reset_color%}"$'\n'"> " ;;
-    *) PROMPT="%{$bg[cyan]%}%n@%M: %d\$%{$reset_color%}"$'\n'"> " ;;
+	0) PROMPT="%{$bg[white]%}%{$fg[black]%}%n@%M: %d\$%{$reset_color%}"$'\n'"> " ;;
+	1000) PROMPT="%{$bg[cyan]%}%{$fg[black]%}%n@%M: %d\$%{$reset_color%}"$'\n'"> " ;;
+	*) PROMPT="%{$bg[blue]%}%{$fg[white]%}%n@%M: %d\$%{$reset_color%}"$'\n'"> " ;;
 esac
 
 # Python startup history

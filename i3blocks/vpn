@@ -1,0 +1,17 @@
+#!/bin/bash
+
+status=
+color=
+
+if [ -d /sys/class/net/tun0 ]
+then
+	status="up"
+	color="#1bff1b"
+else
+	status="down"
+	color="#ff0000"
+fi
+
+echo "${status} "
+echo "${status} "
+echo "${color}" 
