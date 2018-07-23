@@ -5,13 +5,13 @@ color=
 
 if [ -d /sys/class/net/tun0 ]
 then
-	status="up"
+	status="UP"
 	color="#1bff1b"
 else
-	status="down"
+	status="DOWN"
 	color="#ff0000"
 fi
 
-echo "${status} "
-echo "${status} "
-echo "${color}" 
+echo "<span color='${color}' font='monospace'>${status} </span>"
+echo "<span color='${color}' font='monospace'>${status} </span>"
+echo 

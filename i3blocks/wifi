@@ -9,24 +9,22 @@ fi
 # Get wifi info
 info=$(wifi)
 int=$(echo "${info:$[${#info}-6]}" | cut -f2 -d'(' | cut -f1 -d'%')
-color=
+color="#ffffff"
+alarm="#ff0000"
 
 if [ "${info:0:3}" == ":: " ]
 then
 	info="${info:3:-1}"
-	color="#00bfff"
+	color="${alarm}"
 fi
 
-echo "<span font='monospace'>${info} </span>"
-echo "<span font='monospace'>${info} </span>"
-
 # Get color
-if [ -n "${color}" ]
+if [ "${color}" == "${alarm}" ]
 then
 	:
 elif [ "${int}" -le 50 ]
 then
-	color="#ff0000"
+	color="#ffff00"
 elif [ "${int}" -le 70 ]
 then
 	color="#ffff00"
@@ -34,4 +32,6 @@ else
 	:
 fi
 
-echo "${color}"
+echo "<span color='${color}' font='monospace'>${info} </span>"
+echo "<span color='${color}' font='monospace'>${info} </span>"
+echo 

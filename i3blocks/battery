@@ -3,19 +3,21 @@
 # Check for button clicks
 if [ -n "${BLOCK_BUTTON}" ]
 then
-	aria --title="$(battery)" > /dev/null
+	aria --title="$(battery -i)" --time=5 > /dev/null
 fi
 
 # Get battery level
 bat=$(battery -S)
-int="${bat%%.*}" 
-color=
-
-echo "<span font='monospace'>${bat} </span>"
-echo "<span font='monospace'>${bat} </span>"
+int="${bat%%\%*}" 
+status=$(echo "${bat##*\(}" | tr -d ')')
 
 # Get color
-if [ "${int}" -le 30 ]
+color="#ffffff"
+
+if [ "${status}" == "Charging" ]
+then
+	color="#00bfff"
+elif [ "${int}" -le 30 ]
 then
 	color="#ff0000"
 elif [ "${int}" -le 50 ]
@@ -28,4 +30,6 @@ else
 	:
 fi
 
-echo "${color}"
+echo "<span color='${color}' font='monospace'>${int}% </span>"
+echo "<span color='${color}' font='monospace'>${int}% </span>"
+echo 

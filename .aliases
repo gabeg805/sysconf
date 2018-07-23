@@ -14,8 +14,6 @@ alias lsx='ls -lvXh'
 
 # Viewing and/or Editing Files
 alias less='less -M'
-alias nemacs='emacs -nw'
-alias emacs='emacs -g 85x35'
 
 # Pattern Searching
 alias grep='grep --color=auto'
@@ -33,9 +31,6 @@ alias x='exit'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias workout='cd AndroidStudioProjects/WorkoutAssistant/app/src/main'
-alias docs='cd ~/share/docs'
-alias dls='cd ~/share/dls'
 
 # Git
 alias gstat='git status'
@@ -43,9 +38,12 @@ alias gadd='git add'
 alias gcom='git commit'
 alias gpush='git push -u origin master'
 
+# Turn screen off
+alias off='bright --off'
 # Change directory
 cd()
 {
     builtin cd "$@"
     [ $? -eq 0 ] && lsm
 }
+

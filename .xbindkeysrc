@@ -37,8 +37,7 @@
 # keystate_capslock = enable
 #keystate_scrolllock= enable
 
-# Examples of commands:
-
+# Show keybindings
 "xbindkeys_show" 
     Control + Shift + Mod4 + k
 
@@ -53,29 +52,33 @@
 "urxvt"
     Mod4 + t
 
+# Start firefox
+"firefox"
+    Mod4 + Shift + f
+
+# Turn off screen
+"xset dpms force off"
+    Mod4 + Shift + o
+
 # Decrease brightness
 "bright --decrement -D 5 && pkill -RTMIN+11 i3blocks && aria -b "$(bright)""
-    F6
+    XF86MonBrightnessDown
 
 # Increase brightness
 "bright --increment -D 5 && pkill -RTMIN+11 i3blocks && aria -b "$(bright)""
-    F7
+    XF86MonBrightnessUp
 
 # Decrease volume
 "vol --decrement -D 5 && pkill -RTMIN+10 i3blocks && aria -b "$(vol)""
-    F11
+    XF86AudioLowerVolume
 
 # Increase volume
 "vol --increment -D 5 && pkill -RTMIN+10 i3blocks && aria -b "$(vol)""
-    F12
+    XF86AudioRaiseVolume
 
 # Mute volume
 "vol --mute && pkill -RTMIN+10 i3blocks && aria -b "$(vol)""
     XF86AudioMute
-
-# Start firefox
-"firefox"
-    Mod4 + Shift + f
 
 ##################################
 # End of xbindkeys configuration #
