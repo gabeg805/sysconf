@@ -39,24 +39,24 @@ interval=5
 
 [vpn]
 label= VPN:
-command=/home/gabeg/projects/system/i3blocks/vpn
+command=/data/projects/system/i3blocks/vpn
 markup=pango
 
 [wifi]
 label=  
-command=/home/gabeg/projects/system/i3blocks/wifi
+command=/data/projects/system/i3blocks/wifi
 markup=pango
 
 [brightness]
 label=  
-command=/home/gabeg/projects/system/i3blocks/brightness
+command=/data/projects/system/i3blocks/brightness
 markup=pango
 interval=once
 signal=11
 
 [volume]
 label=  
-command=/home/gabeg/projects/system/i3blocks/volume
+command=/data/projects/system/i3blocks/volume
 markup=pango
 instance=Master
 interval=once
@@ -64,12 +64,12 @@ signal=10
 
 [battery]
 label=  
-command=/home/gabeg/projects/system/i3blocks/battery
+command=/data/projects/system/i3blocks/battery
 markup=pango
 interval=10
 
 [date]
 label=  
-command=/home/gabeg/projects/system/i3blocks/date
+command=/data/projects/system/i3blocks/date
 markup=pango
 interval=1
