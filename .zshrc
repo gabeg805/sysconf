@@ -97,17 +97,17 @@ then
 fi
 
 # SSH agent
-if [ ${UID} -ge 1000 ]
-then
-    if ! ps -u "$USER" -ww | grep [^]]ssh-agent > /dev/null
-    then
-        ssh-agent > ~/.ssh-agent-thing
-    fi
-    if [[ "${SSH_AGENT_PID}" == "" ]]
-    then
-        if [ -f ~/.ssh-agent-thing ]
-        then
-            eval "$(<~/.ssh-agent-thing)" &> /dev/null
-        fi
-    fi
-fi
+#if [ ${UID} -ge 1000 ]
+#then
+#    if ! ps -u "$USER" -ww | grep [^]]ssh-agent > /dev/null
+#    then
+#        ssh-agent > ~/.ssh-agent-thing
+#    fi
+#    if [[ "${SSH_AGENT_PID}" == "" ]]
+#    then
+#        if [ -f ~/.ssh-agent-thing ]
+#        then
+#            eval "$(<~/.ssh-agent-thing)" &> /dev/null
+#        fi
+#    fi
+#fi
