@@ -98,6 +98,7 @@ packages_install()
 		alsa-tools \
 		alsa-utils \
 		bc \
+		cronie \
 		dmenu \
 		doxygen \
 		evince \
