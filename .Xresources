@@ -1,11 +1,11 @@
 URxvt.perl-ext-common: default,matcher,clipboard-osc,tabbedex
 
 ! Font
-!URxvt.font        : 9x15
+URxvt.font        : 9x15
 !URxvt*font:xft:Anonymous Pro:pixelsize=16:antialias=true,xft:Anonymice Powerline:pixelsize=16:antialias=true
 !URxvt*font:xft:Input:pixelsize=15:antialias=true
 !URxvt*font:xft:Inconsolata for Powerline:pixelsize=15:antialias=true
-URxvt*font        : xft:Source Code Pro for Powerline:pixelsize=13
+!URxvt*font        : xft:Source Code Pro for Powerline:pixelsize=13
 URxvt.letterSpace : 0
 Xft.dpi           : 96
 Xft.antialias     : true

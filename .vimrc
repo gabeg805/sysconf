@@ -9,6 +9,7 @@ set laststatus=2
 set background=dark
 set splitright
 set splitbelow
+set showcmd
 
 " Highlight functions using Java style
 let java_highlight_functions="style"

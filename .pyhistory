@@ -62,3 +62,15 @@ math.avg(x[8-3:8])
 mean(x[8-3:8])
 import numpy
 numpy.mean(x[8-3:8])
+for i in range(0, 12): print i
+for i in range(0, 12):
+	print i
+for i in range(0, 12):
+	print(i)
+x = not True
+x
+import time
+time.time()
+import tempfile
+name = next(tempfile._get_candidate_names())
+name
