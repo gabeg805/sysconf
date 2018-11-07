@@ -21,6 +21,7 @@ then
 fi
 
 background="${HOME}/projects/system/images/background"
+
 if [ -f "${background}" ]
 then
     feh --bg-fill "${background}"
@@ -43,5 +44,7 @@ fi
 # fi
 
 xcompmgr &
+
+eval $(ssh-agent)
 
 exec i3
