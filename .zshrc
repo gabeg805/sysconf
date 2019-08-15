@@ -51,11 +51,11 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 
 # Emacs key bindings
 bindkey -e
-bindkey '^[^[[D' backward-word     # alt+left
-bindkey '^[^[[C' forward-word      # alt+right
-bindkey '^[Od' backward-word       # alt+left
-bindkey '^[Oc' forward-word        # alt+right
-bindkey '^[[3^' kill-word          # cltr+del
+bindkey '^[^[[D' backward-word	   # alt+left
+bindkey '^[^[[C' forward-word	   # alt+right
+bindkey '^[Od' backward-word	   # alt+left
+bindkey '^[Oc' forward-word		   # alt+right
+bindkey '^[[3^' kill-word		   # cltr+del
 bindkey '^H' backward-kill-word    # ctrl+backspace
 bindkey '^[[A' history-beginning-search-backward   # up arrow
 bindkey '^[[B' history-beginning-search-forward    # down arrow
@@ -68,14 +68,14 @@ select-word-style bash
 # active. Only then are the values from $terminfo valid.
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} ))
 then
-    function zle-line-init () {
-        printf '%s' "${terminfo[smkx]}"
-    }
-    function zle-line-finish () {
-        printf '%s' "${terminfo[rmkx]}"
-    }
-    zle -N zle-line-init
-    zle -N zle-line-finish
+	function zle-line-init () {
+		printf '%s' "${terminfo[smkx]}"
+	}
+	function zle-line-finish () {
+		printf '%s' "${terminfo[rmkx]}"
+	}
+	zle -N zle-line-init
+	zle -N zle-line-finish
 fi
 
 ## Ignore commands
@@ -95,36 +95,36 @@ function zshaddhistory()
 # Aliases
 if [ -f "${HOME}/.aliases" ]
 then
-    . "${HOME}/.aliases"
+	. "${HOME}/.aliases"
 fi
 
 # Environment variables
 if [ -f "${HOME}/.zshenv" ]
 then
-    . "${HOME}/.zshenv"
+	. "${HOME}/.zshenv"
 fi
 
 # Amazon Web Services
 if [ -f "${HOME}/.awsenv" ]
 then
-    . "${HOME}/.awsenv"
+	. "${HOME}/.awsenv"
 fi
 
 # SSH agent
 if [ ${UID} -ge 1000 ]
 then
-    if ! ps -u "${USER}" -ww | grep [^]]ssh-agent > /dev/null
-    then
-        ssh-agent > "${HOME}"/.ssh/.agentenv
-    fi
+	if ! ps -u "${USER}" -ww | grep [^]]ssh-agent > /dev/null
+	then
+		ssh-agent > "${HOME}"/.ssh/.agentenv
+	fi
 
 	if [ -z "${SSH_AUTH_SOCK}" -o -z "${SSH_AGENT_PID}" ]
 	then
-        if [ -f "${HOME}"/.ssh/.agentenv ]
-        then
-            eval "$(<${HOME}/.ssh/.agentenv)" &> /dev/null
-        fi
-    fi
+		if [ -f "${HOME}"/.ssh/.agentenv ]
+		then
+			eval "$(<${HOME}/.ssh/.agentenv)" &> /dev/null
+		fi
+	fi
 fi
 
 # Thunar daemon
