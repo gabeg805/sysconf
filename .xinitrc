@@ -10,41 +10,39 @@
 
 if [ -d /etc/X11/xinit/xinitrc.d ]
 then
-    for f in /etc/X11/xinit/xinitrc.d/*
-    do
-        if [ -x "${f}" ]
-        then
-            . "${f}"
-        fi
-    done
-    unset f
+	for f in /etc/X11/xinit/xinitrc.d/*
+	do
+		if [ -x "${f}" ]
+		then
+			. "${f}"
+		fi
+	done
+	unset f
 fi
 
 background="${HOME}/projects/system/images/background"
 
 if [ -f "${background}" ]
 then
-    feh --bg-fill "${background}"
+	feh --bg-fill "${background}"
 fi
 
 if [ -f "${HOME}/.Xresources" ]
 then
-    xrdb -merge "${HOME}/.Xresources"
+	xrdb -merge "${HOME}/.Xresources"
 fi
 
 if [ -f "${HOME}/.xbindkeysrc" ]
 then
-    setxkbmap -option caps:none
-    xbindkeys
+	setxkbmap -option caps:none
+	xbindkeys
 fi
 
-# if [ -f "${HOME}/.Xmodmap" ]
-# then
-#     xmodmap "${HOME}/.Xmodmap"
-# fi
+if [ -f "${HOME}/.Xmodmap" ]
+then
+	xmodmap "${HOME}/.Xmodmap"
+fi
 
 xcompmgr &
 
-eval $(ssh-agent)
-
-exec i3
+exec ssh-agent i3

@@ -39,7 +39,7 @@
 
 # Show keybindings
 "xbindkeys_show" 
-    Control + Shift + Mod4 + k
+    Control + Mod4 + k
 
 # Start dmenu (a program launcher)
 "dmenu_run -fn 'Anonymous Pro:regular:pixelsize=14'"
@@ -56,28 +56,24 @@
 "firefox"
     Mod4 + Shift + f
 
-# Turn off screen
-"xset dpms force off"
-    Mod4 + Shift + o
-
 # Decrease brightness
-"bright --decrement -D 5 && pkill -RTMIN+11 i3blocks && aria -b "$(bright)""
+"bright --decrement -D 5 && pkill -RTMIN+11 i3blocks && aria -b "$(bright)" -X 35 -Y 15"
     XF86MonBrightnessDown
 
 # Increase brightness
-"bright --increment -D 5 && pkill -RTMIN+11 i3blocks && aria -b "$(bright)""
+"bright --increment -D 5 && pkill -RTMIN+11 i3blocks && aria -b "$(bright)" -X 35 -Y 15"
     XF86MonBrightnessUp
 
 # Decrease volume
-"vol --decrement -D 5 && pkill -RTMIN+10 i3blocks && aria -b "$(vol)""
+"vol --decrement -D 5 && pkill -RTMIN+10 i3blocks && aria -b "$(vol)" -X 35 -Y 15"
     XF86AudioLowerVolume
 
 # Increase volume
-"vol --increment -D 5 && pkill -RTMIN+10 i3blocks && aria -b "$(vol)""
+"vol --increment -D 5 && pkill -RTMIN+10 i3blocks && aria -b "$(vol)" -X 35 -Y 15"
     XF86AudioRaiseVolume
 
 # Mute volume
-"vol --mute && pkill -RTMIN+10 i3blocks && aria -b "$(vol)""
+"vol --mute && pkill -RTMIN+10 i3blocks && aria -b "$(vol)" -X 35 -Y 15"
     XF86AudioMute
 
 ##################################

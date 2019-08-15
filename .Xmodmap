@@ -6,3 +6,7 @@
 ! keycode 87 = XF86AudioLowerVolume
 ! keycode 88 = XF86AudioRaiseVolume
 ! add Control = Control_L
+
+clear Control
+keycode 107 = Control_R
+add Control = Control_R Control_L

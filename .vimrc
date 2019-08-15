@@ -11,17 +11,23 @@ set textwidth=80
 set splitright
 set splitbelow
 set showcmd
+set cursorline
+set colorcolumn=+1
+filetype plugin on
+syntax enable
+
+" Move to next/previous tab
+nnoremap <C-j> gT
+nnoremap <C-k> gt
 
 " Highlight functions using Java style
 let java_highlight_functions="style"
+
 " Don't flag C++ keywords as errors
 let java_allow_cpp_keywords=1
 
 "let g:Powerline_symbols = 'fancy'
 "set nocompatible   " Disable vi-compatibility
-
-filetype plugin on
-syntax enable
 
 " air-line
 let g:airline_powerline_fonts = 1
@@ -68,3 +74,4 @@ let g:solarized_termcolors=256
 
 " Vim colorscheme
 colorscheme molokai
+highlight colorcolumn ctermbg=8
