@@ -11,9 +11,11 @@ alias lsa='ls -Avh'
 alias lsd='ls -d */'
 alias lsn='ls -v'
 alias lsx='ls -lvXh'
+alias lsq='ls --color=never'
 
 # Viewing and/or Editing Files
 alias less='less -M'
+alias feh='feh -Z.'
 
 # Pattern Searching
 alias grep='grep --color=auto'
@@ -31,6 +33,9 @@ alias x='exit'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias .......='cd ../../../../../..'
 
 # Git
 alias gstat='git status'

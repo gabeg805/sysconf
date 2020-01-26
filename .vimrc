@@ -11,6 +11,7 @@ set textwidth=80
 set splitright
 set splitbelow
 set showcmd
+set hlsearch
 set cursorline
 set colorcolumn=+1
 filetype plugin on
