@@ -99,6 +99,7 @@ packages_install()
 		alsa-utils \
 		bc \
 		cronie \
+		dhcpcd \
 		dmenu \
 		doxygen \
 		evince \
@@ -120,6 +121,7 @@ packages_install()
 		lsof \
 		moc \
 		nmap \
+		ntp \
 		openssh \
 		openvpn \
 		os-prober \
@@ -147,6 +149,7 @@ packages_install()
 		xbindkeys \
 		xcompmgr \
 		xorg-server \
+		xorg-server-common \
 		xorg-fonts-misc \
 		xorg-xdm \
 		xorg-xev \
