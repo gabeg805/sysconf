@@ -22,6 +22,10 @@ fi
 if [ "${color}" == "${alarm}" ]
 then
 	:
+elif ! [ "${int}" -eq "${int}" ] 2> /dev/null
+then
+	#info="${info}"
+	color="#b2b2b2"
 elif [ "${int}" -le 50 ]
 then
 	color="#ffff00"
