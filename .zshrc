@@ -83,7 +83,8 @@ function zshaddhistory()
 {
 	emulate -L zsh
 
-	if ! [[ "$1" =~ "(^ |^~|^ykchalresp|--password)" ]]
+	#if ! [[ "$1" =~ "(^ |^~|^ykchalresp|--password)" ]]
+	if ! [[ "$1" =~ "(^ |^ykchalresp|--password)" ]]
 	then
 		print -sr -- "${1%%$'\n'}"
 		fc -p
@@ -111,28 +112,4 @@ then
 fi
 
 # SSH agent
-if [ ${UID} -ge 1000 ]
-then
-	if ! ps -u "${USER}" -ww | grep [^]]ssh-agent > /dev/null
-	then
-		ssh-agent > "${HOME}"/.ssh/.agentenv
-	fi
-
-	if [ -z "${SSH_AUTH_SOCK}" -o -z "${SSH_AGENT_PID}" ]
-	then
-		if [ -f "${HOME}"/.ssh/.agentenv ]
-		then
-			eval "$(<${HOME}/.ssh/.agentenv)" &> /dev/null
-		fi
-	fi
-fi
-
-# Thunar daemon
-if [ ${UID} -eq 1000 -a -n "${DISPLAY}" ]
-then
-	if ! ps -u "${USER}" -ww | grep [^]]thunar > /dev/null
-	then
-		#thunar --daemon &!
-	fi
-fi
-
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"

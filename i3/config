@@ -175,3 +175,6 @@ bar {
 #        urgent_workspace   $color-urgent   $color-urgent   $text-color
 #    }
 }
+
+for_window [title="Android Emulator - Pixel:5554"] floating enable
+

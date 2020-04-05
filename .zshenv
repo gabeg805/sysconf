@@ -48,5 +48,6 @@ then
 fi
 
 # Editing The Path
-PATH="${PATH}":"${HOME}/.local/bin":"${HOME}/projects/bin":"${HOME}/bin":"${HOME}/projects/lib":"${HOME}/lib"
+PATH="${PATH}":"${HOME}":"${HOME}/.local/bin":"${HOME}/projects/bin":"${HOME}/bin":"${HOME}/projects/lib":"${HOME}/lib"
+
 typeset -U path

@@ -110,13 +110,13 @@ usage()
 setup_conf()
 {
 	setup_mksym .aliases "${HOME}"
-	setup_mksym .pyhistory "${HOME}"
 	setup_mksym .pystartup "${HOME}"
 	setup_mksym .vimrc "${HOME}"
 	setup_mksym .xbindkeysrc "${HOME}"
 	setup_mksym .xinitrc "${HOME}"
 	setup_mksym .Xmodmap "${HOME}"
 	setup_mksym .Xresources "${HOME}"
+	setup_mksym .zprofile "${HOME}"
 	setup_mksym .zshenv "${HOME}"
 	setup_mksym .zshrc "${HOME}"
 	setup_mksym .texmf "${HOME}"

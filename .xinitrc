@@ -44,5 +44,6 @@ then
 fi
 
 xcompmgr &
+#udiskie -a -n -t &
 
-exec ssh-agent i3
+exec i3
