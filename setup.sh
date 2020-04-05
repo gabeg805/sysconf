@@ -176,11 +176,14 @@ setup_git()
 setup_system()
 {
 	local dst="${HOME}"/.config/systemd/user
+	local name=
 
 	mkdir -pv "${dst}"
 	for f in systemd/*
 	do
+		name=$(basename $f)
 		setup_mksym "${f}" "${dst}"
+		systemctl --user enable ${name}
 	done
 }
 
