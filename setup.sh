@@ -19,6 +19,7 @@ PROJECT_DIR=$(readlink -e $(dirname "${0}"))
 # Options.
 ##
 CONF=
+FONT=
 GIT=
 
 ##
@@ -33,8 +34,8 @@ EXIT_SETUP_DST_DOES_NOT_EXIST=12
 ##
 main()
 {
-	local short="hcg"
-	local long="help,conf,git"
+	local short="hcfg"
+	local long="help,conf,font,git"
 	local args=$(getopt -o "${short}" --long "${long}" --name "${PROJECT}" \
 					-- "${@}")
 	if [ $? -ne 0 ]
@@ -62,6 +63,9 @@ main()
 			-c|--conf)
 				CONF=true
 				;;
+			-f|--font)
+				FONT=true
+				;;
 			-g|--git)
 				GIT=true
 				;;
@@ -76,6 +80,9 @@ main()
 	if [ -n "${CONF}" ]
 	then
 		setup_conf
+	elif [ -n "${FONT}" ]
+	then
+		setup_font
 	elif [ -n "${GIT}" ]
 	then
 		setup_git
@@ -100,6 +107,9 @@ usage()
 	echo "	  -c, --conf"
 	echo "		  Create symbolic links of the system configuration files."
 	echo 
+	echo "	  -f, --font"
+	echo "		  Create symbolic link of the font directory to the local share."
+	echo 
 	echo "	  -g, --git"
 	echo "		  Download git repos."
 }
@@ -123,6 +133,17 @@ setup_conf()
 	setup_mksym .urxvt "${HOME}"
 	setup_mksym i3 "${HOME}/.config"
 	setup_mksym i3blocks "${HOME}/.config"
+}
+
+##
+# Setup font locally.
+##
+setup_font()
+{
+	local dst="${HOME}"/.local/share
+
+	mkdir -pv "${dst}"
+	setup_mksym fonts "${dst}"
 }
 
 ##
