@@ -21,6 +21,7 @@ PROJECT_DIR=$(readlink -e $(dirname "${0}"))
 CONF=
 FONT=
 GIT=
+SYSTEM=
 
 ##
 # Exit statuses.
@@ -34,8 +35,8 @@ EXIT_SETUP_DST_DOES_NOT_EXIST=12
 ##
 main()
 {
-	local short="hcfg"
-	local long="help,conf,font,git"
+	local short="hcfgs"
+	local long="help,conf,font,git,system"
 	local args=$(getopt -o "${short}" --long "${long}" --name "${PROJECT}" \
 					-- "${@}")
 	if [ $? -ne 0 ]
@@ -69,6 +70,9 @@ main()
 			-g|--git)
 				GIT=true
 				;;
+			-s|--system)
+				SYSTEM=true
+				;;
 			*)
 				break
 				;;
@@ -86,6 +90,9 @@ main()
 	elif [ -n "${GIT}" ]
 	then
 		setup_git
+	elif [ -n "${SYSTEM}" ]
+	then
+		setup_system
 	else
 		:
 	fi
@@ -112,6 +119,9 @@ usage()
 	echo 
 	echo "	  -g, --git"
 	echo "		  Download git repos."
+	echo 
+	echo "	  -s, --system"
+	echo "		  Setup the system files."
 }
 
 ##
@@ -158,6 +168,20 @@ setup_git()
 
 	setup_git_personal
 	#setup_git_misc
+}
+
+##
+# Setup the system files.
+##
+setup_system()
+{
+	local dst="${HOME}"/.config/systemd/user
+
+	mkdir -pv "${dst}"
+	for f in systemd/*
+	do
+		setup_mksym "${f}" "${dst}"
+	done
 }
 
 ##
