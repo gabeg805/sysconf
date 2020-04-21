@@ -39,8 +39,7 @@ fi
 if [ "${value}" != "${nobattery}" ]
 then
 	value="${value}%"
+	echo "  <span color='${color}' font='monospace'>${value} </span>"
+	echo "  <span color='${color}' font='monospace'>${value} </span>"
+	echo 
 fi
-
-echo "<span color='${color}' font='monospace'>${value} </span>"
-echo "<span color='${color}' font='monospace'>${value} </span>"
-echo 

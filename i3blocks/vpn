@@ -1,17 +1,17 @@
 #!/bin/bash
 
-status=
 color=
+symbol=
 
 if [ -d /sys/class/net/tun0 ]
 then
-	status="UP"
-	color="#1bff1b"
+	color="#109910"
+	symbol=""
 else
-	status="DOWN"
 	color="#ff0000"
+	symbol=""
 fi
 
-echo "<span color='${color}' font='monospace'>${status} </span>"
-echo "<span color='${color}' font='monospace'>${status} </span>"
+echo "<span color='${color}' font='monospace'>${symbol}</span>"
+echo "<span color='${color}' font='monospace'>${symbol}</span>"
 echo 

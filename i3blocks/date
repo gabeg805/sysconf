@@ -10,6 +10,6 @@ fi
 # Get date and time
 string=$(date +"%a %B %-d %-I:%M:%S %p")
 
-echo "<span font='monospace'>${string} </span>"
-echo "<span font='monospace'>${string} </span>"
+echo "  <span font='monospace'>${string} </span>"
+echo "  <span font='monospace'>${string} </span>"
 echo 

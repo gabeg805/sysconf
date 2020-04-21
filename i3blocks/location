@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#location=$(wifi -i | awk 'NR==5,NR==6{print $3}' | sed '1s/$/, /' | xargs echo)
+IFS=$'\n'
+info=$(curl -s ipinfo.io)
+city=$(echo "${info[@]}" | grep city | cut -f 4 -d '"' | tr -d '"')
+region=$(echo "${info[@]}" | grep region | cut -f 4 -d '"' | tr -d '"')
+country=$(echo "${info[@]}" | grep country | cut -f 4 -d '"' | tr -d '"')
+
+echo " <span font='monospace'>${city}, ${region} (${country}) </span>"
+echo " <span font='monospace'>${city}, ${region} (${country}) </span>"
+echo 

@@ -9,6 +9,9 @@ fi
 # Get brightness level
 bright=$(bright -S)
 
-echo "<span font='monospace'>${bright} </span>"
-echo "<span font='monospace'>${bright} </span>"
-echo 
+if [ "${bright}" != "N/A" ]
+then
+	echo "  <span font='monospace'>${bright} </span>"
+	echo "  <span font='monospace'>${bright} </span>"
+	echo 
+fi

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+echo "  "
+echo "  "
+echo 
+
+# Show shutdown menu only if button click occurs
+if [ -z "${BLOCK_BUTTON}" ]
+then
+	exit
+fi
+
+typeset -A menu
+typeset -a menu_order
+menu=(
+	[Cancel]=""
+	[Logout]="i3-msg exit"
+	[Suspend]="systemctl suspend"
+	[Reboot]="systemctl reboot"
+	[Shutdown]="systemctl poweroff"
+	#[Hibernate]="systemctl hibernate"
+)
+menu_order=("Cancel" "Logout" "Suspend" "Reboot" "Shutdown")
+menu_nrows=${#menu[@]}
+
+selection=$(printf "%s\n" "${menu_order[@]}" \
+	| rofi -dmenu -i -lines "${menu_nrows}" -width 11 -location 5)
+
+if [ -n "${selection}" ]
+then
+	i3-msg -q "exec ${menu[${selection}]}"
+fi

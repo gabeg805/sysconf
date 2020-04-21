@@ -11,12 +11,11 @@ then
 	color="#ff0000"
 elif [ "${percent}" -ge 50 ]
 then
-	#color="#ffff00"
 	color="#ffa500"
 else
-	color="#ffffff"
+	color="#b2b2b2"
 fi
 
-echo "<span color='${color}' font='monospace'>${percent}% used </span>"
-echo "<span color='${color}' font='monospace'>${percent}% used </span>"
+echo "  <span color='${color}' font='monospace'>${percent}% used </span>"
+echo "  <span color='${color}' font='monospace'>${percent}% used </span>"
 echo 
