@@ -35,6 +35,7 @@ fi
 if [ -f "${HOME}/.xbindkeysrc" ]
 then
 	setxkbmap -option caps:none
+	setxkbmap -option terminate:ctrl_alt_bksp
 	xbindkeys
 fi
 

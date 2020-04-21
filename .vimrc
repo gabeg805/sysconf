@@ -17,6 +17,10 @@ set colorcolumn=+1
 filetype plugin on
 syntax enable
 
+" F1 to ESC
+map <F1> <Esc>
+imap <F1> <Esc>
+
 " Move to next/previous tab
 nnoremap <C-j> gT
 nnoremap <C-k> gt

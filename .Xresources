@@ -28,7 +28,7 @@ URxvt.keysym.Meta-Control-w  : perl:clipboard:copy
 URxvt.keysym.Meta-Control-y  : perl:clipboard:paste
 URxvt.keysym.Shift-Control-C : perl:clipboard:copy
 URxvt.keysym.Shift-Control-V : perl:clipboard:paste
-URxvt.keysym.Shift-Up        :
+URxvt.keysym.Shift-Up        : perl:tabbedex:new_tab
 URxvt.keysym.Shift-Down      : perl:tabbedex:new_tab
 URxvt.keysym.Shift-Left      : perl:tabbedex:prev_tab
 URxvt.keysym.Shift-Right     : perl:tabbedex:next_tab

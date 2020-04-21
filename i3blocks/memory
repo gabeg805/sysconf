@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Get the memory usage
+used=$(free -m | awk 'NR==2{printf "%.1f GB", $3/1024 }')
+percent=$(free -m | awk 'NR==2{printf "%.1f%%", $3/$2 * 100 }')
+
+echo "<span font='monospace'> ${used} (${percent}) </span>"
+echo "<span font='monospace'> ${used} (${percent}) </span>"
+echo 

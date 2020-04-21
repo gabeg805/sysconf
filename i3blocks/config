@@ -47,6 +47,12 @@ label= 
 command=/data/projects/system/i3blocks/wifi
 markup=pango
 
+[memory]
+label= MEM:
+command=/data/projects/system/i3blocks/memory
+markup=pango
+interval=10
+
 [brightness]
 label=  
 command=/data/projects/system/i3blocks/brightness
