@@ -7,8 +7,9 @@ then
 fi
 
 # Get battery level
+nobattery="N/A"
 bat=$(battery -S)
-int="${bat%%\%*}%" 
+value="${bat%%\%*}" 
 status=$(echo "${bat##*\(}" | tr -d ')')
 
 # Get color
@@ -17,27 +18,29 @@ color="#ffffff"
 if [ "${status}" == "Charging" ]
 then
 	color="#00bfff"
-elif ! [ "${int}" -eq "${int}" ] 2> /dev/null
+elif ! [ "${value}" -eq "${value}" ] 2> /dev/null
 then
-	#info="${info}"
-	echo "${bat}" 1>&2
-	echo "${int}" 1>&2
-	echo "${status}" 1>&2
-	int="N/A"
+	value="${nobattery}"
 	color="#b2b2b2"
-elif [ "${int}" -le 30 ]
+elif [ "${value}" -le 30 ]
 then
 	color="#ff0000"
-elif [ "${int}" -le 50 ]
+elif [ "${value}" -le 50 ]
 then
 	color="#ffa500"
-elif [ "${int}" -le 70 ]
+elif [ "${value}" -le 70 ]
 then
 	color="#ffff00"
 else
 	:
 fi
 
-echo "<span color='${color}' font='monospace'>${int} </span>"
-echo "<span color='${color}' font='monospace'>${int} </span>"
+# Add percent sign
+if [ "${value}" != "${nobattery}" ]
+then
+	value="${value}%"
+fi
+
+echo "<span color='${color}' font='monospace'>${value} </span>"
+echo "<span color='${color}' font='monospace'>${value} </span>"
 echo 

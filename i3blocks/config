@@ -43,25 +43,35 @@ command=/data/projects/system/i3blocks/vpn
 markup=pango
 
 [wifi]
-label=  
+label= 
 command=/data/projects/system/i3blocks/wifi
 markup=pango
 
+#[weather]
+#label=Weather: 
+# command=curl -Ss 'https://wttr.in/22204?0&T&Q&u' | cut -c 16- | head -2 | sed '1s/^/\(/; 1s/$/\)/; s/\.\./ - /' | tac | xargs echo
+#interval=3600
+
+#[separator]
+
+#[pacman]
+#command=
+
 [memory]
-label= MEM:
+label= 
 command=/data/projects/system/i3blocks/memory
 markup=pango
 interval=10
 
 [brightness]
-label=  
+label= 
 command=/data/projects/system/i3blocks/brightness
 markup=pango
 interval=once
 signal=11
 
 [volume]
-label=  
+label= 
 command=/data/projects/system/i3blocks/volume
 markup=pango
 instance=Master
@@ -69,13 +79,18 @@ interval=once
 signal=10
 
 [battery]
-label=  
+label= 
 command=/data/projects/system/i3blocks/battery
 markup=pango
 interval=10
 
 [date]
-label=  
+label= 
 command=/data/projects/system/i3blocks/date
 markup=pango
 interval=1
+
+#[power]
+#label= 
+#command=echo Power
+#interval=once

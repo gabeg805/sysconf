@@ -1,9 +1,22 @@
 #!/bin/bash
 
 # Get the memory usage
-used=$(free -m | awk 'NR==2{printf "%.1f GB", $3/1024 }')
-percent=$(free -m | awk 'NR==2{printf "%.1f%%", $3/$2 * 100 }')
+#used=$(free -m | awk 'NR==2{printf "%.1f", $3/1024 }')
+#total=$(free -m | awk 'NR==2{printf "%.1fG", $2/1024 }')
+percent=$(free -m | awk 'NR==2{printf "%.1f", $3/$2 * 100 }')
 
-echo "<span font='monospace'> ${used} (${percent}) </span>"
-echo "<span font='monospace'> ${used} (${percent}) </span>"
+# Get color
+if [ "${percent}" -ge 75 ]
+then
+	color="#ff0000"
+elif [ "${percent}" -ge 50 ]
+then
+	#color="#ffff00"
+	color="#ffa500"
+else
+	color="#ffffff"
+fi
+
+echo "<span color='${color}' font='monospace'>${percent}% used </span>"
+echo "<span color='${color}' font='monospace'>${percent}% used </span>"
 echo 
