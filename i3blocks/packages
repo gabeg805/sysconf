@@ -1,0 +1,11 @@
+#!/bin/bash
+
+days=$((($(date +%s) - $(date -d $(sed -n '/upgrade$/x;${x;s/.\([0-9-]*\).*/\1/p}' /var/log/pacman.log) +%s)) / 86400))
+message="Last updated ${days} days ago"
+
+if  [ ${days} -gt 14 ]
+then
+	echo "   ${message}   "
+	echo "   ${message}   "
+	echo 
+fi

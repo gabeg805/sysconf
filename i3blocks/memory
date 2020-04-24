@@ -1,21 +1,26 @@
 #!/bin/bash
 
 # Get the memory usage
-#used=$(free -m | awk 'NR==2{printf "%.1f", $3/1024 }')
-#total=$(free -m | awk 'NR==2{printf "%.1fG", $2/1024 }')
-percent=$(free -m | awk 'NR==2{printf "%.1f", $3/$2 * 100 }')
+used=$(free -m | awk 'NR==2{printf "%.1f", $3/1024 }')
+total=$(free -m | awk 'NR==2{printf "%.1f", $2/1024 }')
+percent=$(free -m | awk 'NR==2{printf "%2.1f", $3/$2 * 100 }')
+int=${percent%%.*}
 
 # Get color
-if [ "${percent}" -ge 75 ]
+if [ "${int}" -ge 75 ]
 then
 	color="#ff0000"
-elif [ "${percent}" -ge 50 ]
+elif [ "${int}" -ge 50 ]
 then
 	color="#ffa500"
 else
 	color="#b2b2b2"
 fi
 
-echo "  <span color='${color}' font='monospace'>${percent}% used </span>"
-echo "  <span color='${color}' font='monospace'>${percent}% used </span>"
+#echo "  <span color='${color}' font='monospace'>${percent}% used</span>  "
+#echo "  <span color='${color}' font='monospace'>${percent}% used</span>  "
+#echo " <tt><b>M:</b> <span color='${color}'>${message} <small><b>GB</b></small></span></tt>   "
+#echo " <tt><b>M:</b> <span color='${color}'>${message} <small><b>GB</b></small></span></tt>   "
+echo " <tt><b>M:</b> <span color='${color}'>${percent}%</span></tt>  "
+echo " <tt><b>M:</b> <span color='${color}'>${percent}%</span></tt>  "
 echo 

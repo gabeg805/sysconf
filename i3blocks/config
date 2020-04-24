@@ -37,32 +37,27 @@ interval=5
 #border=#1aafb8
 #border=#ffffff
 
+[packages]
+command=/data/projects/system/i3blocks/packages
+markup=pango
+interval=5
+
+[cpu]
+command=/data/projects/system/i3blocks/cpu
+markup=pango
+
+[memory]
+command=/data/projects/system/i3blocks/memory
+markup=pango
+
 [vpn]
 command=/data/projects/system/i3blocks/vpn
 markup=pango
 interval=1
 
-[location]
-command=/data/projects/system/i3blocks/location
-markup=pango
-interval=30
-
 [wifi]
 command=/data/projects/system/i3blocks/wifi
 markup=pango
-
-#[weather]
-#label=Weather: 
-# command=curl -Ss 'https://wttr.in/22204?0&T&Q&u' | cut -c 16- | head -2 | sed '1s/^/\(/; 1s/$/\)/; s/\.\./ - /' | tac | xargs echo
-#interval=3600
-
-#[pacman]
-#command=
-
-[memory]
-command=/data/projects/system/i3blocks/memory
-markup=pango
-interval=10
 
 [brightness]
 command=/data/projects/system/i3blocks/brightness

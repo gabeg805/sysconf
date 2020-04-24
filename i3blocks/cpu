@@ -1,0 +1,19 @@
+#!/bin/bash
+
+usage=$(mpstat | awk '/all/ { printf "%2.1f", $4 }')
+int=${usage%%.*}
+
+# Get color
+if [ "${int}" -ge 75 ]
+then
+	color="#ff0000"
+elif [ "${int}" -ge 50 ]
+then
+	color="#ffa500"
+else
+	color="#b2b2b2"
+fi
+
+echo " <tt><b>C:</b> <span color='${color}'>${usage}%</span></tt>  "
+echo " <tt><b>C:</b> <span color='${color}'>${usage}%</span></tt>  "
+echo

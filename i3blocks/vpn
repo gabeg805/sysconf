@@ -1,17 +1,31 @@
 #!/bin/bash
 
-color=
-symbol=
-
-if [ -d /sys/class/net/tun0 ]
+# Check for button clicks
+if [ -n "${BLOCK_BUTTON}" ]
 then
-	color="#109910"
-	symbol=""
-else
-	color="#ff0000"
-	symbol=""
+	IFS=$'\n'
+	info=$(curl -s ipinfo.io)
+	city=$(echo "${info[@]}" | grep city | cut -f 4 -d '"' | tr -d '"')
+	region=$(echo "${info[@]}" | grep region | cut -f 4 -d '"' | tr -d '"')
+	countryCode=$(echo "${info[@]}" | grep country | cut -f 4 -d '"' | tr -d '"')
+	country=$(grep -Po "\"${countryCode}\": \"\K[^\"]+" /home/gabeg/.config/i3blocks/countries.json)
+	notify-send -t 4000 "${country}" "${city}, ${region}" --icon=applications-internet
 fi
 
-echo "<span color='${color}' font='monospace'>${symbol}</span>"
-echo "<span color='${color}' font='monospace'>${symbol}</span>"
+symbol=
+color=
+message=
+	color="#b2b2b2"
+	symbol=""
+	message="VPN connected"
+
+if [ ! -d /sys/class/net/tun0 ]
+then
+	color="#ff0000"
+	symbol=""
+	message="VPN disconnected"
+fi
+
+echo " ${symbol}  <span color='${color}' font='monospace'>${message}</span>  "
+echo " ${symbol}  <span color='${color}' font='monospace'>${message}</span>  "
 echo 

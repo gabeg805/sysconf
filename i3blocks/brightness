@@ -11,7 +11,7 @@ bright=$(bright -S)
 
 if [ "${bright}" != "N/A" ]
 then
-	echo "  <span font='monospace'>${bright} </span>"
-	echo "  <span font='monospace'>${bright} </span>"
+	echo "  <span font='monospace'>${bright}</span>  "
+	echo "  <span font='monospace'>${bright}</span>  "
 	echo 
 fi

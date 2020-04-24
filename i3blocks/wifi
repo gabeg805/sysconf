@@ -24,7 +24,6 @@ then
 	:
 elif ! [ "${int}" -eq "${int}" ] 2> /dev/null
 then
-	#info="${info}"
 	color="#b2b2b2"
 elif [ "${int}" -le 50 ]
 then
@@ -36,6 +35,14 @@ else
 	:
 fi
 
-echo "<span font='monospace'>  <span color='${color}'>${info}</span> </span>"
-echo "<span font='monospace'>  <span color='${color}'>${info}</span> </span>"
+# Get symbol
+if [ "${info}" == "Wired connection" ]
+then
+	symbol=""
+else
+	symbol=""
+fi
+
+echo "<tt> ${symbol} <span color='${color}'>${info}</span></tt>  "
+echo "<tt> ${symbol} <span color='${color}'>${info}</span></tt>  "
 echo 
