@@ -176,5 +176,6 @@ bar {
 #    }
 }
 
-for_window [title="Android Emulator - Pixel:5554"] floating enable move right 640 px
+#for_window [title="Android Emulator - Pixel:5554"] floating enable move right 640 px
+for_window [title="Android Emulator - Pixel:5554"] floating enable
 

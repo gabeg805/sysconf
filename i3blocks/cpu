@@ -1,6 +1,6 @@
 #!/bin/bash
 
-usage=$(mpstat | awk '/all/ { printf "%2.1f", $4 }')
+usage=$(mpstat 1 1 | awk '/Average/ { printf "%2.1f", 100 - $NF }')
 int=${usage%%.*}
 
 # Get color

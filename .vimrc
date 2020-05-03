@@ -7,7 +7,7 @@ set number
 set timeoutlen=5
 set laststatus=2
 set background=dark
-set textwidth=80
+"set textwidth=80
 set splitright
 set splitbelow
 set showcmd

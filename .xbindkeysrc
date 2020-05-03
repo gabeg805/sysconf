@@ -69,15 +69,15 @@
     XF86MonBrightnessUp
 
 # Decrease volume
-"vol --decrement -D 5 && pkill -RTMIN+10 i3blocks && aria -b "$(vol)" -X 35 -Y 15"
+"vol --notify --decrement -D 5 && pkill -RTMIN+10 i3blocks"
     XF86AudioLowerVolume
 
 # Increase volume
-"vol --increment -D 5 && pkill -RTMIN+10 i3blocks && aria -b "$(vol)" -X 35 -Y 15"
+"vol --notify --increment -D 5 && pkill -RTMIN+10 i3blocks"
     XF86AudioRaiseVolume
 
 # Mute volume
-"vol --mute && pkill -RTMIN+10 i3blocks && aria -b "$(vol)" -X 35 -Y 15"
+"vol --notify --mute && pkill -RTMIN+10 i3blocks"
     XF86AudioMute
 
 ##################################
