@@ -3,7 +3,10 @@
 # Check for button clicks
 if [ -n "${BLOCK_BUTTON}" ]
 then
-	aria --title="$(wifi -p)" --time=4 > /dev/null
+	IFS=$'\n'
+	addr=($(wifi -p | grep --color=never '*'))
+	notify-send -t 4000 --icon=applications-internet \
+		-- "Local IP Address" "${addr[*]}"
 fi
 
 # Get wifi info

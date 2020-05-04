@@ -9,7 +9,8 @@ then
 	region=$(echo "${info[@]}" | grep region | cut -f 4 -d '"' | tr -d '"')
 	countryCode=$(echo "${info[@]}" | grep country | cut -f 4 -d '"' | tr -d '"')
 	country=$(grep -Po "\"${countryCode}\": \"\K[^\"]+" /home/gabeg/.config/i3blocks/countries.json)
-	notify-send -t 4000 "${country}" "${city}, ${region}" --icon=applications-internet
+	notify-send -t 4000 --icon=applications-internet \
+		"${country}" "${city}, ${region}"
 fi
 
 symbol=

@@ -3,7 +3,7 @@
 # Check for button clicks
 if [ -n "${BLOCK_BUTTON}" ]
 then
-	aria --title="$(bright)" > /dev/null
+	notify-send -t 4000 --icon=display-brightness "$(bright)"
 fi
 
 # Get brightness level

@@ -3,7 +3,7 @@
 # Check for clicks
 if [ -n "${BLOCK_BUTTON}" ]
 then
-	aria --title="$(vol)" > /dev/null
+	vol --notify &> /dev/null
 fi
 
 # Get volume level

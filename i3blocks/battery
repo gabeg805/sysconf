@@ -3,7 +3,9 @@
 # Check for button clicks
 if [ -n "${BLOCK_BUTTON}" ]
 then
-	aria --title="$(battery -i)" --time=5 > /dev/null
+	IFS=$'\n'
+	info=($(battery -i))
+	notify-send -t 7000 --icon=battery -- "${info[0]}" "${info[*]:1}"
 fi
 
 # Get battery level
