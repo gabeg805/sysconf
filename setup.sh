@@ -132,6 +132,7 @@ setup_conf()
 	setup_mksym .aliases "${HOME}"
 	setup_mksym .pystartup "${HOME}"
 	setup_mksym .vimrc "${HOME}"
+	setup_mksym vim "${HOME}" .vim
 	setup_mksym .xbindkeysrc "${HOME}"
 	setup_mksym .xinitrc "${HOME}"
 	setup_mksym .Xmodmap "${HOME}"
@@ -240,24 +241,29 @@ setup_mksym()
 	local file="${1}"
 	local src="${PROJECT_DIR}/${file}"
 	local dst="${2}"
+	local targetname="${3}"
 
-	if [ ! -d "${dst}" ]
-	then
-		return ${EXIT_SETUP_DST_DOES_NOT_EXIST}
-	else
-		builtin cd "${dst}"
-	fi
+	builtin cd "${dst}" || return ${EXIT_SETUP_DST_DOES_NOT_EXIST}
 
 	if [ -e "${dst}/${file}" ]
 	then
 		local msg="Replace '$(basename "${src}")' in '${dst}'? "
 		local response=
-
 		read -p "${msg}" response
+
 		case "${response}" in
-			y|Y) ln -svf "${src}" ;;
-			*) return ;;
+			y|Y)
+				rm -fv "${dst}/${file}"
+				;;
+			*)
+				return
+				;;
 		esac
+	fi
+
+	if [ -n "${targetname}" ]
+	then
+		ln -svi "${src}" "${targetname}"
 	else
 		ln -svi "${src}"
 	fi

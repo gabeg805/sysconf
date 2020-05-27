@@ -40,6 +40,10 @@ export MULLVAD_USE_GTK3=yes
 # Android SDK home
 # export ANDROID_HOME=/opt/android-sdk
 
+# Change where GO programming language has its directory. I hate that it's
+# in HOME by default.
+export GOPATH=${HOME}/.local/share
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]
 then

@@ -51,15 +51,25 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 
 # Emacs key bindings
 bindkey -e
-bindkey '^[^[[D' backward-word	   # alt+left
-bindkey '^[^[[C' forward-word	   # alt+right
-bindkey '^[Od' backward-word	   # alt+left
-bindkey '^[Oc' forward-word		   # alt+right
-bindkey '^[[3^' kill-word		   # cltr+del
-bindkey '^H' backward-kill-word    # ctrl+backspace
-bindkey '^[[A' history-beginning-search-backward   # up arrow
-bindkey '^[[B' history-beginning-search-forward    # down arrow
-bindkey "^[[3~" delete-char
+#bindkey '^[^[[C' forward-word	   # alt+right
+#bindkey '^[^[[D' backward-word	   # alt+left
+#bindkey '^[Oc' forward-word		   # alt+right
+#bindkey '^[Od' backward-word	   # alt+left
+#bindkey '^[[3^' kill-word		   # cltr+del
+#bindkey '^[[A' history-beginning-search-backward   # up arrow
+#bindkey '^[[B' history-beginning-search-forward    # down arrow
+bindkey "\e[1;3C"	forward-word						# alt + right
+bindkey "\e[1;3D"	backward-word						# alt + left
+bindkey "\e[1;5C"	forward-word						# ctrl + right
+bindkey "\e[1;5D"	backward-word						# ctrl + left
+bindkey "\e[1;3B"	history-beginning-search-forward	# alt + down
+bindkey "\e[1;3A"	history-beginning-search-backward	# alt + up
+bindkey "\e[1;5B"	history-beginning-search-forward	# ctrl + down
+bindkey "\e[1;5A"	history-beginning-search-backward	# ctrl + up
+bindkey "\e[3~"		delete-char							# delete
+bindkey "\e[3;3~"	kill-word							# alt + delete
+bindkey "\e[3;5~"	kill-word							# ctrl + delete
+bindkey "^H"		backward-kill-word					# ctrl + backspace
 unset WORDCHARS
 autoload -U select-word-style
 select-word-style bash
