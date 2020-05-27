@@ -56,3 +56,22 @@ cd()
     [ $? -eq 0 ] && lsm
 }
 
+# Rename contents of a directory to match the directory name
+renametodir()
+{
+	local dir=$(basename "${1}")
+	local file=
+	if [ -z "${dir}" ]
+	then
+		return 1
+	fi
+
+	builtin cd "${dir}"
+
+	for file in *
+	do
+		mv "${file}" "${dir}.${file##*.}"
+	done
+
+	builtin cd ..
+}
