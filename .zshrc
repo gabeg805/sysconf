@@ -42,7 +42,7 @@ unsetopt nomatch
 
 # Miscellaneous commands
 zstyle ':completion:*' menu select
-zstyle :compinstall filename '/home/gabeg/.zshrc'
+zstyle :compinstall filename "${HOME}/.zshrc"
 autoload -Uz compinit
 compinit
 
@@ -51,13 +51,6 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 
 # Emacs key bindings
 bindkey -e
-#bindkey '^[^[[C' forward-word	   # alt+right
-#bindkey '^[^[[D' backward-word	   # alt+left
-#bindkey '^[Oc' forward-word		   # alt+right
-#bindkey '^[Od' backward-word	   # alt+left
-#bindkey '^[[3^' kill-word		   # cltr+del
-#bindkey '^[[A' history-beginning-search-backward   # up arrow
-#bindkey '^[[B' history-beginning-search-forward    # down arrow
 bindkey "\e[1;3C"	forward-word						# alt + right
 bindkey "\e[1;3D"	backward-word						# alt + left
 bindkey "\e[1;5C"	forward-word						# ctrl + right
@@ -93,7 +86,6 @@ function zshaddhistory()
 {
 	emulate -L zsh
 
-	#if ! [[ "$1" =~ "(^ |^~|^ykchalresp|--password)" ]]
 	if ! [[ "$1" =~ "(^ |^ykchalresp|--password)" ]]
 	then
 		print -sr -- "${1%%$'\n'}"
@@ -120,6 +112,3 @@ if [ -f "${HOME}/.awsenv" ]
 then
 	. "${HOME}/.awsenv"
 fi
-
-# SSH agent
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
