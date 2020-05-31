@@ -30,18 +30,15 @@ fi
 export HISTFILE=~/.histfile
 export HISTSIZE=1000000
 export SAVEHIST=${HISTSIZE}
-#export VISUAL=/usr/bin/vim
 export EDITOR=/usr/bin/vim
 export SUDO_EDITOR=/usr/bin/vim
 export PYTHONSTARTUP=${HOME}/.pystartup
-# Disable warnings from GTK accessibility
-#export NO_AT_BRIDGE=1
-# Force Mullvad to use GTK3
-#export MULLVAD_USE_GTK3=yes
 export TEXMFHOME=${HOME}/.texmf
-# Android SDK home
-# export ANDROID_HOME=/opt/android-sdk
-# Change where GO programming language has its directory. I hate that it's
-# in HOME by default.
+export ANDROID_SDK_ROOT=/opt/android-sdk/Android/Sdk
 export GOPATH=${HOME}/.local/share
-export PATH="${PATH}":"${HOME}":"${HOME}/.local/bin":"${HOME}/projects/bin":"${HOME}/bin":"${HOME}/projects/lib":"${HOME}/lib":/opt/android-studio-ide/android-studio/bin
+
+# Add to path in a cleaner manner
+#export PATH="${PATH}":"${HOME}/projects/bin":/opt/android-studio/bin
+path+=(${HOME}/projects/bin)
+path+=(/opt/android-studio/bin)
+typeset -U path
