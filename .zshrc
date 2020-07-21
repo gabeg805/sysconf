@@ -51,18 +51,36 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 
 # Emacs key bindings
 bindkey -e
-bindkey "\e[1;3C"	forward-word						# alt + right
-bindkey "\e[1;3D"	backward-word						# alt + left
-bindkey "\e[1;5C"	forward-word						# ctrl + right
-bindkey "\e[1;5D"	backward-word						# ctrl + left
-bindkey "\e[1;3B"	history-beginning-search-forward	# alt + down
-bindkey "\e[1;3A"	history-beginning-search-backward	# alt + up
-bindkey "\e[1;5B"	history-beginning-search-forward	# ctrl + down
-bindkey "\e[1;5A"	history-beginning-search-backward	# ctrl + up
-bindkey "\e[3~"		delete-char							# delete
-bindkey "\e[3;3~"	kill-word							# alt + delete
-bindkey "\e[3;5~"	kill-word							# ctrl + delete
-bindkey "^H"		backward-kill-word					# ctrl + backspace
+
+if [ "$(hostname)" == "magnumopus" ]
+then
+	bindkey "\e[1;3C" forward-word                      # alt + right
+	bindkey "\e[1;3D" backward-word                     # alt + left
+	bindkey "\e[1;5C" forward-word                      # ctrl + right
+	bindkey "\e[1;5D" backward-word                     # ctrl + left
+	bindkey "\e[1;3B" history-beginning-search-forward  # alt + down
+	bindkey "\e[1;3A" history-beginning-search-backward # alt + up
+	bindkey "\e[1;5B" history-beginning-search-forward  # ctrl + down
+	bindkey "\e[1;5A" history-beginning-search-backward # ctrl + up
+	bindkey "\e[3~"   delete-char                       # delete
+	bindkey "\e[3;3~" kill-word                         # alt + delete
+	bindkey "\e[3;5~" kill-word                         # ctrl + delete
+	bindkey "^H"      backward-kill-word                # ctrl + backspace
+else
+	bindkey "^[^[[C"  forward-word                      # alt + right
+	bindkey "^[^[[D"  backward-word                     # alt + left
+	#bindkey "" forward-word                            # ctrl + right
+	#bindkey "" backward-word                           # ctrl + left
+	bindkey "^[^[[B"  history-beginning-search-forward  # alt + down
+	bindkey "^[^[[A"  history-beginning-search-backward # alt + up
+	bindkey "^[[B"    history-beginning-search-forward  # ctrl + down
+	bindkey "^[[A"    history-beginning-search-backward # ctrl + up
+	bindkey "^[[3~"   delete-char                       # delete
+	bindkey "^[^[[3~" kill-word                         # alt + delete
+	bindkey "^[[3^"   kill-word                         # ctrl + delete
+	bindkey "^H"      backward-kill-word                # ctrl + backspace
+fi
+
 unset WORDCHARS
 autoload -U select-word-style
 select-word-style bash

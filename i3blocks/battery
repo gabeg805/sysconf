@@ -15,7 +15,7 @@ value="${bat%%\%*}"
 status=$(echo "${bat##*\(}" | tr -d ')')
 
 # Get color
-color="#ffffff"
+color="#b2b2b2"
 
 if [ "${status}" == "Charging" ]
 then

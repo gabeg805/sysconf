@@ -121,6 +121,7 @@ packages_install()
 		lsof \
 		moc \
 		nmap \
+		ntfs-3g \
 		ntp \
 		openssh \
 		openvpn \
@@ -135,11 +136,13 @@ packages_install()
 		rsync \
 		rxvt-unicode \
 		scrot \
+		sysstat \
 		transmission-gtk \
 		ttf-anonymous-pro \
 		ttf-dejavu \
 		ttf-droid \
 		ttf-inconsolata \
+		udisks2 \
 		unzip \
 		urxvt-perls \
 		vim \
