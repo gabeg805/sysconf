@@ -61,11 +61,11 @@
     Mod4 + Shift + f
 
 # Decrease brightness
-"bright --decrement -D 5 && pkill -RTMIN+11 i3blocks && aria -b "$(bright)" -X 35 -Y 15"
+"bright --notify --decrement -D 5 && pkill -RTMIN+11 i3blocks"
     XF86MonBrightnessDown
 
 # Increase brightness
-"bright --increment -D 5 && pkill -RTMIN+11 i3blocks && aria -b "$(bright)" -X 35 -Y 15"
+"bright --notify --increment -D 5 && pkill -RTMIN+11 i3blocks"
     XF86MonBrightnessUp
 
 # Decrease volume

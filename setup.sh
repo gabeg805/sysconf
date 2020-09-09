@@ -142,6 +142,7 @@ setup_conf()
 	setup_mksym .zshrc "${HOME}"
 	setup_mksym .texmf "${HOME}"
 	setup_mksym .urxvt "${HOME}"
+	mkdir -pv "${HOME}/.config"
 	setup_mksym i3 "${HOME}/.config"
 	setup_mksym i3blocks "${HOME}/.config"
 }
