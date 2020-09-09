@@ -1,0 +1,13 @@
+import RPi.GPIO as GPIO
+help(GPIO)
+import os
+os.environ['HOME']
+import urllib2
+import urllib
+external_ip = urllib.request.urlopen('https://ident.me').read().decode('utf8')
+import urllib.request
+external_ip = urllib.request.urlopen('https://ident.me').read().decode('utf8')
+external_ip
+with open('/tmp/ipaddr.tmp', 'r') as handle:
+	ip = handle.read()
+ip
