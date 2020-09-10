@@ -36,6 +36,7 @@ export PYTHONSTARTUP=${HOME}/.pystartup
 export TEXMFHOME=${HOME}/.texmf
 export ANDROID_SDK_ROOT=/opt/android-sdk/Android/Sdk
 export GOPATH=${HOME}/.local/share
+export PAGER=/usr/bin/less
 
 # Add to path in a cleaner manner
 #export PATH="${PATH}":"${HOME}/projects/bin":/opt/android-studio/bin
