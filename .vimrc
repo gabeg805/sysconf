@@ -6,6 +6,7 @@ set laststatus=2
 "set colorcolumn=+1
 set shiftwidth=4
 set tabstop=4
+set autochdir
 set autoindent
 set noexpandtab
 set number
