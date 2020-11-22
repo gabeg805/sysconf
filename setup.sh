@@ -19,7 +19,6 @@ PROJECT_DIR=$(readlink -e $(dirname "${0}"))
 # Options.
 ##
 CONF=
-FONT=
 GIT=
 SYSTEM=
 
@@ -36,9 +35,9 @@ EXIT_SETUP_DST_DOES_NOT_EXIST=12
 main()
 {
 	local short="hcfgs"
-	local long="help,conf,font,git,system"
+	local long="help,conf,git,system"
 	local args=$(getopt -o "${short}" --long "${long}" --name "${PROJECT}" \
-					-- "${@}")
+		-- "${@}")
 	if [ $? -ne 0 ]
 	then
 		usage
@@ -64,9 +63,6 @@ main()
 			-c|--conf)
 				CONF=true
 				;;
-			-f|--font)
-				FONT=true
-				;;
 			-g|--git)
 				GIT=true
 				;;
@@ -84,9 +80,6 @@ main()
 	if [ -n "${CONF}" ]
 	then
 		setup_conf
-	elif [ -n "${FONT}" ]
-	then
-		setup_font
 	elif [ -n "${GIT}" ]
 	then
 		setup_git
@@ -114,9 +107,6 @@ usage()
 	echo "	  -c, --conf"
 	echo "		  Create symbolic links of the system configuration files."
 	echo 
-	echo "	  -f, --font"
-	echo "		  Create symbolic link of the font directory to the local share."
-	echo 
 	echo "	  -g, --git"
 	echo "		  Download git repos."
 	echo 
@@ -129,33 +119,30 @@ usage()
 ##
 setup_conf()
 {
-	setup_mksym .aliases "${HOME}"
-	setup_mksym .pystartup "${HOME}"
-	setup_mksym .vimrc "${HOME}"
-	setup_mksym vim "${HOME}" .vim
-	setup_mksym .xbindkeysrc "${HOME}"
-	setup_mksym .xinitrc "${HOME}"
-	setup_mksym .Xmodmap "${HOME}"
-	setup_mksym .Xresources "${HOME}"
-	setup_mksym .zprofile "${HOME}"
-	setup_mksym .zshenv "${HOME}"
-	setup_mksym .zshrc "${HOME}"
-	setup_mksym .texmf "${HOME}"
-	setup_mksym .urxvt "${HOME}"
-	mkdir -pv "${HOME}/.config"
-	setup_mksym i3 "${HOME}/.config"
-	setup_mksym i3blocks "${HOME}/.config"
-}
+	ln -svi "${PROJECT_DIR}/.aliases" "${HOME}"
+	ln -svi "${PROJECT_DIR}/.pystartup" "${HOME}"
+	ln -svi "${PROJECT_DIR}/.texmf" "${HOME}"
+	ln -svi "${PROJECT_DIR}/.urxvt" "${HOME}"
+	ln -svi "${PROJECT_DIR}/.vim" "${HOME}"
+	ln -svi "${PROJECT_DIR}/.vimrc" "${HOME}"
+	ln -svi "${PROJECT_DIR}/.xbindkeysrc" "${HOME}"
+	ln -svi "${PROJECT_DIR}/.xinitrc" "${HOME}"
+	ln -svi "${PROJECT_DIR}/.Xmodmap" "${HOME}"
+	ln -svi "${PROJECT_DIR}/.Xresources" "${HOME}"
+	ln -svi "${PROJECT_DIR}/.zprofile" "${HOME}"
+	ln -svi "${PROJECT_DIR}/.zshenv" "${HOME}"
+	ln -svi "${PROJECT_DIR}/.zshrc" "${HOME}"
 
-##
-# Setup font locally.
-##
-setup_font()
-{
-	local dst="${HOME}"/.local/share
+	local configDir="${HOME}/.config"
+	mkdir -pv "${configDir}"
 
-	mkdir -pv "${dst}"
-	setup_mksym fonts "${dst}"
+	ln -svi "${PROJECT_DIR}/i3" "${configDir}"
+	ln -svi "${PROJECT_DIR}/i3blocks" "${configDir}"
+
+	local shareDir="${HOME}/.local/share"
+	mkdir -pv "${shareDir}"
+
+	ln -svi "${PROJECT_DIR}/fonts" "${shareDir}"
 }
 
 ##
@@ -177,16 +164,14 @@ setup_git()
 ##
 setup_system()
 {
-	local dst="${HOME}"/.config/systemd/user
-	local name=
+	local systemdDir="${HOME}/.config/systemd/user"
+	mkdir -pv "${systemdDir}"
 
-	setup_mksym .pam_environment "${HOME}"
+	ln -svi "${PROJECT_DIR}/.pam_environment" "${HOME}"
 
-	mkdir -pv "${dst}"
-	for f in ./systemd/*.service
+	for f in "${PROJECT_DIR}"/systemd/*.service
 	do
-		name=$(basename $f)
-		setup_mksym "${f}" "${dst}"
+		ln -svi "${f}" "${systemdDir}"
 		systemctl --user enable ${name}
 	done
 }
