@@ -111,6 +111,7 @@ packages_install()
 		gparted \
 		gsimplecal \
 		i3-wm \
+		i3blocks \
 		i3status \
 		ifplugd \
 		iproute2 \
@@ -122,7 +123,7 @@ packages_install()
 		moc \
 		nmap \
 		ntfs-3g \
-		ntp \
+		#ntp \
 		openssh \
 		openvpn \
 		os-prober \
@@ -151,6 +152,7 @@ packages_install()
 		wpa_supplicant \
 		xbindkeys \
 		xcompmgr \
+		xfce4-notifyd \
 		xorg-server \
 		xorg-server-common \
 		xorg-fonts-misc \
