@@ -220,46 +220,6 @@ setup_git_misc()
 	git clone ssh://git@github.com/gabeg805/website
 }
 
-
-##
-# Create a symbolic link.
-##
-setup_mksym()
-{
-	local file="${1}"
-	local src="${PROJECT_DIR}/${file}"
-	local dst="${2}"
-	local targetname="${3}"
-
-	builtin cd "${dst}" || return ${EXIT_SETUP_DST_DOES_NOT_EXIST}
-
-	if [ -e "${dst}/${file}" ]
-	then
-		local msg="Replace '$(basename "${src}")' in '${dst}'? "
-		local response=
-		read -p "${msg}" response
-
-		case "${response}" in
-			y|Y)
-				rm -fv "${dst}/${file}"
-				;;
-			*)
-				builtin cd - > /dev/null
-				return
-				;;
-		esac
-	fi
-
-	if [ -n "${targetname}" ]
-	then
-		ln -svi "${src}" "${targetname}"
-	else
-		ln -svi "${src}"
-	fi
-
-	builtin cd - > /dev/null
-}
-
 ##
 # Run script.
 ##
