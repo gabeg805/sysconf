@@ -1,0 +1,9 @@
+[Unit]
+Description=Start the VPN service for a user
+
+[Service]
+Type=simple
+ExecStart="/opt/Mullvad VPN/mullvad-vpn" %U
+
+[Install]
+WantedBy=default.target
