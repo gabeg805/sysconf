@@ -180,6 +180,8 @@ setup_system()
 	local dst="${HOME}"/.config/systemd/user
 	local name=
 
+	setup_mksym .pam_environment "${HOME}"
+
 	mkdir -pv "${dst}"
 	for f in systemd/*
 	do

@@ -1,9 +1,13 @@
 [Unit]
 Description=Start the VPN service for a user
+StartLimitBurst=5
+StartLimitIntervalSec=20
 
 [Service]
 Type=simple
 ExecStart="/opt/Mullvad VPN/mullvad-vpn" %U
+RestartSec=3
+Restart=on-abnormal
 
 [Install]
 WantedBy=default.target
