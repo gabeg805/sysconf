@@ -183,7 +183,7 @@ setup_system()
 	setup_mksym .pam_environment "${HOME}"
 
 	mkdir -pv "${dst}"
-	for f in systemd/*
+	for f in ./systemd/*.service
 	do
 		name=$(basename $f)
 		setup_mksym "${f}" "${dst}"
@@ -259,6 +259,7 @@ setup_mksym()
 				rm -fv "${dst}/${file}"
 				;;
 			*)
+				builtin cd - > /dev/null
 				return
 				;;
 		esac
@@ -270,6 +271,8 @@ setup_mksym()
 	else
 		ln -svi "${src}"
 	fi
+
+	builtin cd - > /dev/null
 }
 
 ##
