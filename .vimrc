@@ -15,6 +15,17 @@ set splitbelow
 set showcmd
 set hlsearch
 set cursorline
+
+" Aggregate all the swap files in one place.
+"
+" The ^= syntax for :set prepends the directory name to the head of the list,
+" so Vim will check that directory first.
+"
+" The // at the end of the directory name tells Vim to use the absolute path
+" to the file to create the swap file so there aren't collisions between
+" files of the same name from different directories.
+set directory^=$HOME/.vim/tmp//
+
 filetype plugin on
 syntax enable
 
