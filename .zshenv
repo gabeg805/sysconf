@@ -34,13 +34,14 @@ export EDITOR=/usr/bin/vim
 export SUDO_EDITOR=/usr/bin/vim
 export PYTHONSTARTUP=${HOME}/.pystartup
 export TEXMFHOME=${HOME}/.texmf
-export ANDROID_SDK_ROOT=/opt/android-sdk/Android/Sdk
+export ANDROID_SDK_ROOT=/opt/android-sdk
 export GOPATH=${HOME}/.local/share
 export PAGER=/usr/bin/less
 
 # Add to path in a cleaner manner
 #export PATH="${PATH}":"${HOME}/projects/bin":/opt/android-studio/bin
 path+=(${HOME}/projects/bin)
+path+=(${HOME}/dolphin)
 path+=(/opt/android-sdk/emulator)
 path+=(/opt/android-sdk/platform-tools)
 path+=(/opt/android-sdk/tools)
