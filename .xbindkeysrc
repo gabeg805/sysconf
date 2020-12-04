@@ -37,29 +37,6 @@
 # keystate_capslock = enable
 #keystate_scrolllock= enable
 
-# Show keybindings
-"xbindkeys_show" 
-    Control + Mod4 + k
-
-# Start dmenu (a program launcher)
-"dmenu_run -fn 'Anonymous Pro:regular:pixelsize=14'"
-    Mod4 + d
-
-# Start terminal
-"urxvt"
-    Mod4 + Return
-
-"urxvt"
-    Mod4 + t
-
-# Shutdown menu
-"BLOCK_BUTTON=true /data/projects/system/i3blocks/power"
-	Control + Mod4 + Delete
-
-# Start firefox
-"firefox"
-    Mod4 + Shift + f
-
 # Decrease brightness
 "bright --notify --decrement -D 5 && pkill -RTMIN+11 i3blocks"
     XF86MonBrightnessDown

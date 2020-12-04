@@ -38,6 +38,14 @@ floating_modifier $mod
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+# Custom commands
+bindsym $mod+Return exec --no-startup-id "urxvt"
+bindsym $mod+t exec --no-startup-id "urxvt"
+bindsym $mod+d exec --no-startup-id "rofi -show drun"
+bindsym $mod+Shift+f exec --no-startup-id "firefox"
+bindsym $mod+Shift+Delete exec --no-startup-id "BLOCK_BUTTON=true /data/projects/system/i3blocks/power"
+
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
