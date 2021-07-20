@@ -174,6 +174,11 @@ setup_system()
 		ln -svi "${f}" "${systemdDir}"
 		systemctl --user enable ${name}
 	done
+
+	if hash redshift
+	then
+		systemctl --user enable redshift.service
+	fi
 }
 
 ##
