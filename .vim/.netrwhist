@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/data/projects/android/app/SickSends/app/src/main/java/me/gabeg/sicksends/problem/type'
+let g:netrw_dirhist_4='/data/projects/android/app/SickSends/app/src/main/java/me/gabeg/sicksends/addclimb'
+let g:netrw_dirhist_3='/data/projects/android/app/SickSends/app/src/main/java/me/gabeg/sicksends/problem'
+let g:netrw_dirhist_2='/data/projects/android/app/SickSends/app/src/main/java/me/gabeg/sicksends/addclimb'
+let g:netrw_dirhist_1='/data/projects/android/app/NFCAlarmClock/app/src/main/java/com/nfcalarmclock'
+let g:netrw_dirhist_0='/data/projects/android/app/NFCAlarmClock/app/build'
+let g:netrw_dirhist_9='/data/projects/android/app/NFCAlarmClock/app/src/main/java/com/nfcalarmclock/settings'
+let g:netrw_dirhist_8='/data/projects/android/app/NFCAlarmClock/app/src/main/java/com/nfcalarmclock'
+let g:netrw_dirhist_7='/data/projects/android/app/NFCAlarmClock/app/src/main/java/com/nfcalarmclock/statistics'
+let g:netrw_dirhist_6='/data/projects/android/app/NFCAlarmClock/app/src/main/java/com/nfcalarmclock'
