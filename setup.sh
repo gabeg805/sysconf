@@ -177,7 +177,7 @@ setup_system()
 
 	if hash redshift
 	then
-		systemctl --user enable redshift.service
+		systemctl --user enable redshift-gtk.service
 	fi
 }
 
