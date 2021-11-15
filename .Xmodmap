@@ -1,12 +1,6 @@
-! clear Lock
-! keycode 66  = Control_L
-! keycode 135 = Super_L
-! keycode 62 = XF86MonBrightnessDown
-! keycode 63 = XF86MonBrightnessUp
-! keycode 87 = XF86AudioLowerVolume
-! keycode 88 = XF86AudioRaiseVolume
-! add Control = Control_L
+!clear Control
+!keycode 107 = Control_R
+!add Control = Control_R Control_L
 
-clear Control
-keycode 107 = Control_R
-add Control = Control_R Control_L
+keycode 107 = Super_R Hyper_R
+keycode 135 = Super_R Hyper_R

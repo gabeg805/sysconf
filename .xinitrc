@@ -37,8 +37,8 @@ fi
 # X keybindings
 if [ -f "${HOME}/.xbindkeysrc" ]
 then
-	setxkbmap -option caps:none
 	setxkbmap -option terminate:ctrl_alt_bksp
+	setxkbmap -option caps:none
 	xbindkeys
 fi
 
@@ -48,8 +48,13 @@ then
 	xmodmap "${HOME}/.Xmodmap"
 fi
 
-# Composite manager (for transparency)
-xcompmgr &
+# Enable NumLock
+if hash numlockx 2> /dev/null
+then
+	numlockx &
+fi
+
+# USB mounter
 #udiskie -a -n -t &
 
 # Geoclue (for redshift)
@@ -59,5 +64,8 @@ if [ -f "${geoclue}" ]
 then
 	"${geoclue}" &
 fi
+
+# Composite manager (for transparency)
+xcompmgr &
 
 exec i3
