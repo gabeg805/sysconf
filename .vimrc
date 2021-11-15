@@ -37,6 +37,9 @@ imap <F1> <Esc>
 nnoremap <C-j> gT
 nnoremap <C-k> gt
 
+" Disable the defaults set by /usr/share/vim/vim##/ftplugin/python.vim
+let g:python_recommended_style = 0
+
 " Run airline stuff only on specific machines
 let hostname = substitute(system('hostname'), '\n', '', '')
 

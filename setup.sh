@@ -165,17 +165,21 @@ setup_git()
 setup_system()
 {
 	local systemdDir="${HOME}/.config/systemd/user"
+	local name=
+
 	mkdir -pv "${systemdDir}"
 
 	ln -svi "${PROJECT_DIR}/.pam_environment" "${HOME}"
 
 	for f in "${PROJECT_DIR}"/systemd/*.service
 	do
+		name=$(basename "${f}" ".service")
+
 		ln -svi "${f}" "${systemdDir}"
 		systemctl --user enable ${name}
 	done
 
-	if hash redshift
+	if hash redshift 2> /dev/null
 	then
 		systemctl --user enable redshift-gtk.service
 	fi
