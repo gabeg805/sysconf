@@ -1,6 +1,5 @@
 configuration {
 	modi: "window,drun,filebrowser";
-	theme: "Adapta-Nokto";
 	font: "Source Code Pro for Powerline 12";
 	location: 0;
 	icon-theme: "Papyrus";
@@ -104,3 +103,5 @@ configuration {
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/
 }
+
+@theme "Adapta-Nokto"
