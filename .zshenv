@@ -37,6 +37,7 @@ export TEXMFHOME=${HOME}/.texmf
 export ANDROID_SDK_ROOT=/opt/android-sdk
 export GOPATH=${HOME}/.local/share
 export PAGER=/usr/bin/less
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 # Add to path in a cleaner manner
 #export PATH="${PATH}":"${HOME}/projects/bin":/opt/android-studio/bin
