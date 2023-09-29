@@ -37,6 +37,11 @@ imap <F1> <Esc>
 nnoremap <C-j> gT
 nnoremap <C-k> gt
 
+" Comment stuff
+let mapleader=","
+
+noremap <leader>/ :Commentary<cr>
+
 " Disable the defaults set by /usr/share/vim/vim##/ftplugin/python.vim
 let g:python_recommended_style = 0
 

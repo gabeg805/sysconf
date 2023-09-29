@@ -49,8 +49,8 @@ compinit
 # case-insensitive (all),partial-word and then substring completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
-# Emacs key bindings
-bindkey -e
+# Vim key bindings
+bindkey -v
 
 #if [ "$(hostname)" == "magnumopus" ]
 #then
@@ -112,6 +112,10 @@ function zshaddhistory()
 		return 1
 	fi
 }
+
+#  Start vim (in command line) in normal mode
+#autoload -Uz add-zle-hook-widget
+#add-zle-hook-widget line-init vi-cmd-mode
 
 # Aliases
 if [ -f "${HOME}/.aliases" ]

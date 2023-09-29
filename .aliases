@@ -49,6 +49,9 @@ alias off='bright --off'
 # Fix Lenovo touchpad (click buttons above touchpad stop working sometimes)
 alias touchpadfix='sudo modprobe -r psmouse; sleep 2; sudo modprobe psmouse'
 
+# Rsync
+alias rsyncy='rsync -avh --progress'
+
 # Change directory
 cd()
 {

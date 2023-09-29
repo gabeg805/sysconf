@@ -40,11 +40,11 @@ floating_modifier $mod
 
 # Custom commands
 bindsym $mod+Return exec --no-startup-id "urxvt"
-bindsym $mod+t exec --no-startup-id "urxvt"
-bindsym $mod+d exec --no-startup-id "rofi -show drun"
+bindsym $mod+t exec --no-startup-id urxvt
+bindsym $mod+d exec --no-startup-id "rofi -disable-history -show combi"
 bindsym $mod+Shift+f exec --no-startup-id "firefox"
 bindsym $mod+Shift+Delete exec --no-startup-id "BLOCK_BUTTON=true /data/projects/system/i3blocks/power"
-
+bindsym --release $mod+Shift+s exec --no-startup-id scrot --select --freeze --exec 'xclip -selection clipboard -t image/png -i $f && mv $f /tmp/'
 
 # kill focused window
 bindsym $mod+Shift+q kill
