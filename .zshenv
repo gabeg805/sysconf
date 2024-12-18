@@ -7,19 +7,19 @@
 # 
 # ------------------------------------------------------------------------------
 
-# Add colors to prompt and "ls" command
-autoload -U colors && colors
-case ${UID} in
-	0)
-		PROMPT="%{$bg[white]%}%{$fg[black]%}%n@%M: %d\$%{$reset_color%}"$'\n'"> "
-		;;
-	1000)
-		PROMPT="%{$bg[cyan]%}%{$fg[black]%}%n@%M: %d\$%{$reset_color%}"$'\n'"> "
-		;;
-	*)
-		PROMPT="%{$bg[blue]%}%{$fg[white]%}%n@%M: %d\$%{$reset_color%}"$'\n'"> "
-		;;
-esac
+## Add colors to prompt and "ls" command
+#autoload -U colors && colors
+#case ${UID} in
+#	0)
+#		PROMPT="%{$bg[white]%}%{$fg[black]%}%n@%M: %d\$%{$reset_color%}"$'\n'"> "
+#		;;
+#	1000)
+#		PROMPT="%{$bg[cyan]%}%{$fg[black]%}%n@%M: %d\$%{$reset_color%}"$'\n'"> "
+#		;;
+#	*)
+#		PROMPT="%{$bg[blue]%}%{$fg[white]%}%n@%M: %d\$%{$reset_color%}"$'\n'"> "
+#		;;
+#esac
 
 if [ -x /usr/bin/dircolors ]
 then
@@ -38,6 +38,7 @@ export ANDROID_SDK_ROOT=/opt/android-sdk
 export GOPATH=${HOME}/.local/share
 export PAGER=/usr/bin/less
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+export MOZ_ENABLE_WAYLAND=1
 
 # Add to path in a cleaner manner
 #export PATH="${PATH}":"${HOME}/projects/bin":/opt/android-studio/bin

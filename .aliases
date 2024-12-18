@@ -4,8 +4,7 @@
 alias ls='ls --color=auto --group-directories-first -N'
 alias l='ls'
 alias ll='ls -lvh'
-alias lsm='ls -lvh'
-alias lsl='ls -lrth'
+alias lsm='ls -lrt'
 alias lsc='ls -1 -vX'
 alias lsa='ls -Avh'
 alias lsd='ls -d */'
@@ -16,14 +15,15 @@ alias lsq='ls --color=never'
 # Viewing and/or Editing Files
 alias less='less -M'
 alias feh='feh -Z.'
+alias thunar='GTK_THEME=Adwaita:dark thunar'
 
 # Pattern Searching
-alias grep='grep --color=auto'
+alias grep='grep --color=auto -n'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # Deleting, Moving, or Copying Files
-alias rm='rm -i'
+alias rm='rm -iv'
 alias mv='mv -nv'
 alias cp='cp -nv'
 alias til='trash -d *~'
@@ -37,11 +37,20 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
 
+# Google translate
+alias gtranslate='source ~/projects/android/goog/bin/activate; builtin cd ~/projects/google_translate_xml/'
+
 # Git
 alias gstat='git status'
 alias gadd='git add'
 alias gcom='git commit'
 alias gpush='git push -u origin master'
+
+# Pacman
+alias pq='pacman -Qi'
+
+# Rsync
+alias rsyncy='rsync -avh --progress'
 
 # Turn screen off
 alias off='bright --off'
@@ -49,14 +58,11 @@ alias off='bright --off'
 # Fix Lenovo touchpad (click buttons above touchpad stop working sometimes)
 alias touchpadfix='sudo modprobe -r psmouse; sleep 2; sudo modprobe psmouse'
 
-# Rsync
-alias rsyncy='rsync -avh --progress'
-
 # Change directory
 cd()
 {
     builtin cd "$@"
-    [ $? -eq 0 ] && lsm
+    [ $? -eq 0 ] && ll
 }
 
 # Rename contents of a directory to match the directory name

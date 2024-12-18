@@ -35,12 +35,12 @@ then
 fi
 
 # X keybindings
-if [ -f "${HOME}/.xbindkeysrc" ]
-then
-	setxkbmap -option terminate:ctrl_alt_bksp
-	setxkbmap -option caps:none
-	xbindkeys
-fi
+#if [ -f "${HOME}/.xbindkeysrc" ]
+#then
+#	setxkbmap -option terminate:ctrl_alt_bksp
+#	setxkbmap -option caps:none
+#	xbindkeys
+#fi
 
 # Modify key mapping
 if [ -f "${HOME}/.Xmodmap" ]
@@ -66,6 +66,7 @@ then
 fi
 
 # Composite manager (for transparency)
-xcompmgr &
+#xcompmgr &
 
-exec i3
+#exec i3
+exec sway --unsupported-gpu

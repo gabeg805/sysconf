@@ -39,12 +39,16 @@ floating_modifier $mod
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # Custom commands
-bindsym $mod+Return exec --no-startup-id "urxvt"
-bindsym $mod+t exec --no-startup-id urxvt
-bindsym $mod+d exec --no-startup-id "rofi -disable-history -show combi"
-bindsym $mod+Shift+f exec --no-startup-id "firefox"
+bindsym $mod+Return exec --no-startup-id terminator
+bindsym Return+Alt_R exec --no-startup-id terminator
+bindsym $mod+t exec --no-startup-id terminator
+bindsym $mod+d exec --no-startup-id rofi -show combi
+bindsym $mod+Shift+f exec --no-startup-id firefox
 bindsym $mod+Shift+Delete exec --no-startup-id "BLOCK_BUTTON=true /data/projects/system/i3blocks/power"
-bindsym --release $mod+Shift+s exec --no-startup-id scrot --select --freeze --exec 'xclip -selection clipboard -t image/png -i $f && mv $f /tmp/'
+bindsym --release $mod+Shift+s exec --no-startup-id slurp | grim -g - /tmp/$(date +"%Y-%m-%d_%H%M%S").png
+
+bindsym --whole-window button9 workspace next_on_output
+bindsym --whole-window button8 workspace prev_on_output
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -123,10 +127,26 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# Notification bar
+bindsym $mod+Shift+n exec swaync-client -t -sw
+
+# Volume
+bindsym XF86AudioRaiseVolume exec vol --notify --increment -D 5 && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec vol --notify --decrement -D 5 && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec vol --notify --mute && pkill -RTMIN+10 i3blocks
+#bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+#bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+#bindsym XF86AudioPlay exec playerctl play-pause
+#bindsym XF86AudioNext exec playerctl next
+#bindsym XF86AudioPrev exec playerctl previous
+#bindsym XF86Search exec bemenu-run
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+#bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -185,5 +205,44 @@ bar {
 #    }
 }
 
-#for_window [title="Android Emulator - Pixel:5554"] floating enable move right 640 px
-for_window [title="Android Emulator - Pixel:5554"] floating enable
+output DP-1 mode 1920x1080@144Hz pos    0    0 bg ~/projects/system/images/background fill
+output DP-2 mode 2560x1440@144Hz pos 4160 1080 bg ~/projects/system/images/background fill
+output DP-3 mode 2560x1440@144Hz pos 1600 1080 bg ~/projects/system/images/background fill
+
+#output DP-1 mode 1920x1080@144Hz pos 4900    0 bg ~/projects/system/images/background fill
+#output DP-2 mode 2560x1440@165Hz pos 2560 1080 bg ~/projects/system/images/background fill
+#output DP-3 mode 2560x1440@165Hz pos    0 1080 bg ~/projects/system/images/background fill
+
+#output DP-1 mode 1920x1080@60Hz pos 4900    0 bg ~/projects/system/images/background fill
+#output DP-2 mode 2560x1440@60Hz pos 2560 1080 bg ~/projects/system/images/background fill
+#output DP-3 mode 2560x1440@60Hz pos    0 1080 bg ~/projects/system/images/background fill
+workspace 1 output DP-3
+workspace 2 output DP-2
+workspace 3 output DP-1
+
+# Focus on sway launch (but not on reload)
+exec swaymsg focus output DP-3
+
+# Input settings
+input * xkb_options caps:escape
+input * xkb_capslock disabled
+input type:pointer scroll_factor 0.25
+
+# Sway FX
+#layer_effects waybar corner_radius 10
+#layer_effects "waybar" blur enable; shadows enable; corner_radius 6
+
+#smart_corner_radius on
+#corner_radius 10
+#default_dim_inactive 0.05
+#blur enable
+#blur_passes 2
+#blur_radius 2
+#layer_effects "waybar" "blur enable"; shadows enable
+#shadows on
+#shadow_blur_radius 20
+
+#exec way-displays > /tmp/way-displays.${XDG_VTNR}.${USER}.log 2>&1
+
+exec swaync
+
