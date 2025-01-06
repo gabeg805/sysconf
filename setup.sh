@@ -146,6 +146,7 @@ setup_conf()
 
 	# Check if oh my zsh does not exist yet
 	local ohMyZshDir="${HOME}/projects/oh-my-zsh"
+	local customOhMyZshPluginsDir="${ohMyZshDir}/custom/plugins"
 
 	if [ ! -d "${ohMyZshDir}" ]
 	then
@@ -175,11 +176,19 @@ setup_conf()
 	ln -svi "${PROJECT_DIR}/.zshrc.oh-my-zsh" "${HOME}/.zshrc"
 	ln -svi "${PROJECT_DIR}/goob.zsh-theme" "${ohMyZshDir}/themes"
 
-	# Download autosuggestion plugin if need be
-	if [ ! -d "${ohMyZshDir}/plugins/zsh-autosuggestions" ]
+	# Download zsh-autosuggestion plugin if need be
+	if [ ! -d "${customOhMyZshPluginsDir}/zsh-autosuggestions" ]
 	then
-		builtin cd "${ohMyZshDir}/plugins"
-		git clone https://github.com/zsh-users/zsh-autosuggestions zsh-autosuggestions
+		builtin cd "${customOhMyZshPluginsDir}"
+		git clone https://github.com/zsh-users/zsh-autosuggestions
+		builtin cd -
+	fi
+
+	# Download zsh-vi-mode plugin if need be
+	if [ ! -d "${customOhMyZshPluginsDir}/zsh-vi-mode" ]
+	then
+		builtin cd "${customOhMyZshPluginsDir}"
+		git clone https://github.com/jeffreytse/zsh-vi-mode
 		builtin cd -
 	fi
 }
