@@ -89,7 +89,15 @@ prompt_end() {
 # Context: user@hostname (who am I and where am I)
 prompt_context() {
   if [[ "$USERNAME" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment black default "%(!.%{%F{yellow}%}.)%n@%m"
+		if [ $UID -eq 1000 ]
+		then
+			prompt_segment black default "%(!.%{%F{yellow}%}.)%n@%m"
+		elif [ $UID -eq 0 ]
+		then
+			prompt_segment red white "%(!.%{%F{yellow}%}.)%n@%m"
+		else
+			prompt_segment yellow black "%(!.%{%F{yellow}%}.)%n@%m"
+		fi
   fi
 }
 

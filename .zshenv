@@ -37,11 +37,13 @@ export TEXMFHOME=${HOME}/.texmf
 export ANDROID_SDK_ROOT=/opt/android-sdk
 export GOPATH=${HOME}/.local/share
 export PAGER=/usr/bin/less
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 export MOZ_ENABLE_WAYLAND=1
+export ZSH_DISABLE_COMPFIX=true
 
 # Add to path in a cleaner manner
 #export PATH="${PATH}":"${HOME}/projects/bin":/opt/android-studio/bin
+path+=(${HOME}/.local/bin)
 path+=(${HOME}/projects/bin)
 path+=(${HOME}/dolphin)
 path+=(/opt/android-sdk/emulator)

@@ -15,7 +15,6 @@ alias lsq='ls --color=never'
 # Viewing and/or Editing Files
 alias less='less -M'
 alias feh='feh -Z.'
-alias thunar='GTK_THEME=Adwaita:dark thunar'
 
 # Pattern Searching
 alias grep='grep --color=auto -n'
@@ -24,8 +23,8 @@ alias egrep='egrep --color=auto'
 
 # Deleting, Moving, or Copying Files
 alias rm='rm -iv'
-alias mv='mv -nv'
-alias cp='cp -nv'
+alias mv='mv -nvi'
+alias cp='cp -nvi'
 alias til='trash -d *~'
 
 # Misc Aliases
@@ -36,6 +35,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
+alias ,,='..'
 
 # Google translate
 alias gtranslate='source ~/projects/android/goog/bin/activate; builtin cd ~/projects/google_translate_xml/'
@@ -46,11 +46,11 @@ alias gadd='git add'
 alias gcom='git commit'
 alias gpush='git push -u origin master'
 
-# Pacman
-alias pq='pacman -Qi'
-
 # Rsync
 alias rsyncy='rsync -avh --progress'
+
+# Prusa slicer
+alias prusa='flatpak run --user com.prusa3d.PrusaSlicer'
 
 # Turn screen off
 alias off='bright --off'

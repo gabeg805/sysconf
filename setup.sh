@@ -119,30 +119,69 @@ usage()
 ##
 setup_conf()
 {
-	ln -svi "${PROJECT_DIR}/.aliases" "${HOME}"
-	ln -svi "${PROJECT_DIR}/.pystartup" "${HOME}"
-	ln -svi "${PROJECT_DIR}/.texmf" "${HOME}"
-	ln -svi "${PROJECT_DIR}/.urxvt" "${HOME}"
-	ln -svi "${PROJECT_DIR}/.vim" "${HOME}"
-	ln -svi "${PROJECT_DIR}/.vimrc" "${HOME}"
-	ln -svi "${PROJECT_DIR}/.xbindkeysrc" "${HOME}"
-	ln -svi "${PROJECT_DIR}/.xinitrc" "${HOME}"
-	ln -svi "${PROJECT_DIR}/.Xmodmap" "${HOME}"
-	ln -svi "${PROJECT_DIR}/.Xresources" "${HOME}"
-	ln -svi "${PROJECT_DIR}/.zprofile" "${HOME}"
-	ln -svi "${PROJECT_DIR}/.zshenv" "${HOME}"
-	ln -svi "${PROJECT_DIR}/.zshrc" "${HOME}"
+	#ln -svi "${PROJECT_DIR}/.aliases" "${HOME}"
+	#ln -svi "${PROJECT_DIR}/.pystartup" "${HOME}"
+	#ln -svi "${PROJECT_DIR}/.texmf" "${HOME}"
+	#ln -svi "${PROJECT_DIR}/.urxvt" "${HOME}"
+	#ln -svi "${PROJECT_DIR}/.vim" "${HOME}"
+	#ln -svi "${PROJECT_DIR}/.vimrc" "${HOME}"
+	##ln -svi "${PROJECT_DIR}/.xbindkeysrc" "${HOME}"
+	##ln -svi "${PROJECT_DIR}/.xinitrc" "${HOME}"
+	##ln -svi "${PROJECT_DIR}/.Xmodmap" "${HOME}"
+	##ln -svi "${PROJECT_DIR}/.Xresources" "${HOME}"
+	#ln -svi "${PROJECT_DIR}/.zprofile" "${HOME}"
+	#ln -svi "${PROJECT_DIR}/.zshenv" "${HOME}"
+	#ln -svi "${PROJECT_DIR}/.zshrc" "${HOME}"
 
-	local configDir="${HOME}/.config"
-	mkdir -pv "${configDir}"
+	#local configDir="${HOME}/.config"
+	#mkdir -pv "${configDir}"
 
-	ln -svi "${PROJECT_DIR}/i3" "${configDir}"
-	ln -svi "${PROJECT_DIR}/i3blocks" "${configDir}"
+	#ln -svi "${PROJECT_DIR}/i3" "${configDir}"
+	#ln -svi "${PROJECT_DIR}/i3blocks" "${configDir}"
 
-	local shareDir="${HOME}/.local/share"
-	mkdir -pv "${shareDir}"
+	#local shareDir="${HOME}/.local/share"
+	#mkdir -pv "${shareDir}"
 
-	ln -svi "${PROJECT_DIR}/fonts" "${shareDir}"
+	#ln -svi "${PROJECT_DIR}/fonts" "${shareDir}"
+
+	# Check if oh my zsh does not exist yet
+	local ohMyZshDir="${HOME}/projects/oh-my-zsh"
+
+	if [ ! -d "${ohMyZshDir}" ]
+	then
+
+		# Prompt to see if oh my zsh should be downloaded
+		read -p "Download Oh My ZSH? (y/n) " -n 1
+		echo
+		if [[ ! $REPLY =~ ^[Yy]$ ]]
+		then
+			exit 0
+		fi
+
+		# Download oh my zsh
+		ZSH="${ohMyZshDir}" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+		# Check that oh my zsh directory exists
+		if [ ! -d "${ohMyZshDir}" ]
+		then
+			echo "Error: Unable to find Oh My Zsh directory: '${ohMyZshDir}'"
+			exit 1
+		fi
+
+	fi
+
+	# Move oh my zsh files in place
+	mv -f "${HOME}/.zshrc" "${HOME}/.zshrc.post-oh-my-zsh"
+	ln -svi "${PROJECT_DIR}/.zshrc.oh-my-zsh" "${HOME}/.zshrc"
+	ln -svi "${PROJECT_DIR}/goob.zsh-theme" "${ohMyZshDir}/themes"
+
+	# Download autosuggestion plugin if need be
+	if [ ! -d "${ohMyZshDir}/plugins/zsh-autosuggestions" ]
+	then
+		builtin cd "${ohMyZshDir}/plugins"
+		git clone https://github.com/zsh-users/zsh-autosuggestions zsh-autosuggestions
+		builtin cd -
+	fi
 }
 
 ##

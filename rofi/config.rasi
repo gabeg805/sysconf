@@ -9,6 +9,12 @@ configuration {
 	scroll-method: 1;
 	sidebar-mode: true;
 
+	drun {
+
+		/** Parse user desktop files */
+		parse-user: true;
+
+	}
 
 /*	columns: 1;*/
 /*	ignored-prefixes: "";*/
