@@ -52,3 +52,6 @@ path+=(/opt/android-sdk/tools)
 path+=(/opt/android-sdk/tools/bin)
 path+=(/opt/android-studio/bin)
 typeset -U path
+
+# Umask
+umask 002

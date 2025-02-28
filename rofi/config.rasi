@@ -1,5 +1,5 @@
 configuration {
-	modi: "window,drun,filebrowser";
+	modi: "combi,drun,ssh";
 	font: "Source Code Pro for Powerline 12";
 	location: 0;
 	icon-theme: "Papyrus";
@@ -8,12 +8,12 @@ configuration {
 	dpi: 96;
 	scroll-method: 1;
 	sidebar-mode: true;
+	terminal: "/usr/bin/terminator";
+	ssh-command: "{terminal} -e '{ssh-client} {host} [-p {port}]'";
 
 	drun {
-
 		/** Parse user desktop files */
 		parse-user: true;
-
 	}
 
 /*	columns: 1;*/
@@ -110,4 +110,31 @@ configuration {
 /*	me-accept-custom: "Control+MouseDPrimary";*/
 }
 
-@theme "Adapta-Nokto"
+//@theme "Adapta-Nokto"
+
+//@theme "/home/gabeg/.local/share/rofi/themes/launchpad.rasi"
+
+//@theme "/home/gabeg/.local/share/rofi/themes/spotlight-dark.rasi"
+
+//@theme "/home/gabeg/.local/share/rofi/themes/rounded-orange-dark.rasi"
+
+//@theme "/home/gabeg/.local/share/rofi/themes/squared-material-red.rasi"
+
+//@theme "/home/gabeg/.local/share/rofi/themes/rounded-orange-dark.rasi"
+
+//@theme "/home/gabeg/.local/share/rofi/themes/rounded-pink-dark.rasi"
+
+@theme "/home/gabeg/.local/share/rofi/themes/rounded-purple-dark.rasi"
+
+element {
+	spacing: 0.75em;
+}
+
+element-icon {
+	size: 2em;
+}
+
+element-text {
+	vertical-align: 0.5;
+}
+

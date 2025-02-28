@@ -119,30 +119,33 @@ usage()
 ##
 setup_conf()
 {
-	#ln -svi "${PROJECT_DIR}/.aliases" "${HOME}"
-	#ln -svi "${PROJECT_DIR}/.pystartup" "${HOME}"
+	# Home
+	ln -svi "${PROJECT_DIR}/.aliases" "${HOME}"
+	ln -svi "${PROJECT_DIR}/.pystartup" "${HOME}"
 	#ln -svi "${PROJECT_DIR}/.texmf" "${HOME}"
 	#ln -svi "${PROJECT_DIR}/.urxvt" "${HOME}"
-	#ln -svi "${PROJECT_DIR}/.vim" "${HOME}"
-	#ln -svi "${PROJECT_DIR}/.vimrc" "${HOME}"
+	ln -svi "${PROJECT_DIR}/.vim" "${HOME}"
+	ln -svi "${PROJECT_DIR}/.vimrc" "${HOME}"
 	##ln -svi "${PROJECT_DIR}/.xbindkeysrc" "${HOME}"
 	##ln -svi "${PROJECT_DIR}/.xinitrc" "${HOME}"
 	##ln -svi "${PROJECT_DIR}/.Xmodmap" "${HOME}"
 	##ln -svi "${PROJECT_DIR}/.Xresources" "${HOME}"
-	#ln -svi "${PROJECT_DIR}/.zprofile" "${HOME}"
-	#ln -svi "${PROJECT_DIR}/.zshenv" "${HOME}"
-	#ln -svi "${PROJECT_DIR}/.zshrc" "${HOME}"
+	ln -svi "${PROJECT_DIR}/.zprofile" "${HOME}"
+	ln -svi "${PROJECT_DIR}/.zshenv" "${HOME}"
+	ln -svi "${PROJECT_DIR}/.zshrc" "${HOME}"
 
+	## Config
 	#local configDir="${HOME}/.config"
 	#mkdir -pv "${configDir}"
 
 	#ln -svi "${PROJECT_DIR}/i3" "${configDir}"
 	#ln -svi "${PROJECT_DIR}/i3blocks" "${configDir}"
 
-	#local shareDir="${HOME}/.local/share"
-	#mkdir -pv "${shareDir}"
+	# Share
+	local shareDir="${HOME}/.local/share"
+	mkdir -pv "${shareDir}"
 
-	#ln -svi "${PROJECT_DIR}/fonts" "${shareDir}"
+	ln -svi "${PROJECT_DIR}/fonts" "${shareDir}"
 
 	# Check if oh my zsh does not exist yet
 	local ohMyZshDir="${HOME}/projects/oh-my-zsh"

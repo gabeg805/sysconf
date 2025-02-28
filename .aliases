@@ -38,7 +38,7 @@ alias .......='cd ../../../../../..'
 alias ,,='..'
 
 # Google translate
-alias gtranslate='source ~/projects/android/goog/bin/activate; builtin cd ~/projects/google_translate_xml/'
+alias gtranslate='source ~/projects/android/goog/bin/activate; source ~/.local/share/pipx/venvs/google-cloud-translate/bin/activate; builtin cd ~/projects/google_translate_xml/'
 
 # Git
 alias gstat='git status'

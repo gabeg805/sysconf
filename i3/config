@@ -42,7 +42,7 @@ floating_modifier $mod
 bindsym $mod+Return exec --no-startup-id terminator
 bindsym Return+Alt_R exec --no-startup-id terminator
 bindsym $mod+t exec --no-startup-id terminator
-bindsym $mod+d exec --no-startup-id rofi -show combi
+bindsym $mod+d exec --no-startup-id rofi -combi-modes "drun,run,ssh" -show combi
 bindsym $mod+Shift+f exec --no-startup-id firefox
 bindsym $mod+Shift+Delete exec --no-startup-id "BLOCK_BUTTON=true /data/projects/system/i3blocks/power"
 bindsym --release $mod+Shift+s exec --no-startup-id slurp | grim -g - /tmp/$(date +"%Y-%m-%d_%H%M%S").png
