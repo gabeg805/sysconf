@@ -20,7 +20,7 @@ message=
 	symbol=""
 	message="VPN connected"
 
-if [ ! -d /sys/class/net/tun0 -a ! -d /sys/class/net/*-* ]
+if [ ! -d /sys/class/net/tun0 -a ! -d /sys/class/net/*-* -a ! -d /sys/class/net/proton0 ]
 then
 	color="#ff0000"
 	symbol=""

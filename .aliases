@@ -3,8 +3,8 @@
 # Listing Folder Contents
 alias ls='ls --color=auto --group-directories-first -N'
 alias l='ls'
-alias ll='ls -lvh'
-alias lsm='ls -lrt'
+alias ll='ls -lrt'
+alias lsm='ls -lvh'
 alias lsc='ls -1 -vX'
 alias lsa='ls -Avh'
 alias lsd='ls -d */'
