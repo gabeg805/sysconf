@@ -15,6 +15,7 @@ alias lsq='ls --color=never'
 # Viewing and/or Editing Files
 alias less='less -M'
 alias feh='feh -Z.'
+alias pdf='zathura'
 
 # Pattern Searching
 alias grep='grep --color=auto -n'
@@ -62,7 +63,7 @@ alias touchpadfix='sudo modprobe -r psmouse; sleep 2; sudo modprobe psmouse'
 cd()
 {
     builtin cd "$@"
-    [ $? -eq 0 ] && ll
+    [ $? -eq 0 ] && lsm
 }
 
 # Rename contents of a directory to match the directory name
