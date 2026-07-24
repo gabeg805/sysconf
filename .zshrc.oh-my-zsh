@@ -70,8 +70,14 @@ zstyle ':omz:update' frequency 14
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(colored-man-pages zsh-vi-mode zsh-autosuggestions)
+plugins=(colored-man-pages tmux zsh-vi-mode zsh-autosuggestions)
 
+# Autostart tmux
+export ZSH_TMUX_AUTOSTART=$([ $UID -eq 1000 ] && echo true || echo false)
+export ZSH_TMUX_AUTOCONNECT=false
+export ZSH_TMUX_AUTOQUIT=false
+
+# Source oh my zsh
 source $ZSH/oh-my-zsh.sh
 
 # Aliases
@@ -93,21 +99,10 @@ then
 fi
 
 # User configuration
-
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
 
 # Set personal aliases, overriding those provided by Oh My Zsh libs,
 # plugins, and themes. Aliases can be placed here, though Oh My Zsh

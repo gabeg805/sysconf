@@ -16,17 +16,18 @@ fi
 symbol=
 color=
 message=
-	color="#b2b2b2"
-	symbol=""
-	message="VPN connected"
 
 if [ ! -d /sys/class/net/tun0 -a ! -d /sys/class/net/*-* -a ! -d /sys/class/net/proton0 ]
 then
 	color="#ff0000"
 	symbol=""
 	message="VPN disconnected"
+else
+	color="#00cd00"
+	symbol=""
+	message="VPN connected"
 fi
 
-echo " ${symbol}  <span color='${color}' font='monospace'>${message}</span>  "
-echo " ${symbol}  <span color='${color}' font='monospace'>${message}</span>  "
+echo "  <span color='${color}' font='monospace'>${symbol} ${message}</span>   "
+echo "  <span color='${color}' font='monospace'>${symbol} ${message}</span>   "
 echo 

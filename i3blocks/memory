@@ -21,6 +21,6 @@ fi
 #echo "  <span color='${color}' font='monospace'>${percent}% used</span>  "
 #echo " <tt><b>M:</b> <span color='${color}'>${message} <small><b>GB</b></small></span></tt>   "
 #echo " <tt><b>M:</b> <span color='${color}'>${message} <small><b>GB</b></small></span></tt>   "
-echo " <tt><b>M:</b> <span color='${color}'>${percent}%</span></tt>  "
-echo " <tt><b>M:</b> <span color='${color}'>${percent}%</span></tt>  "
+echo "  <tt><b>M:</b> <span color='${color}'>${percent}%</span></tt>   "
+echo "  <tt><b>M:</b> <span color='${color}'>${percent}%</span></tt>   "
 echo 
