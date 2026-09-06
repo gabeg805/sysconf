@@ -9,6 +9,6 @@ fi
 # Get volume level
 vol=$(printf "%-4s" "$(vol -S)")
 
-echo "  <span font='monospace'>${vol}</span>"
-echo "  <span font='monospace'>${vol}</span>"
+echo "  <span font='monospace'>${vol}</span> "
+echo "  <span font='monospace'>${vol}</span> "
 echo 
