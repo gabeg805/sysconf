@@ -20,7 +20,8 @@ then
 fi
 
 # Check for the existence of a VPN tunnel
-for d in /sys/class/net/{tun*,pvpn*,proton*,*-*}
+#for d in /sys/class/net/{tun*,pvpn*,proton*,*-*}
+for d in /sys/class/net/{tun*,pvpn*,proton*}
 do
 	if [ -d "${d}" ]
 	then
